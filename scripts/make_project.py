@@ -70,7 +70,7 @@ jobs:
       - name: Fetch design assets (personnages, logos, objets animés)
         run: python3 scripts/fetch_assets.py
       - name: Install Pillow (génération icône)
-        run: python3 -m pip install --quiet pillow
+        run: python3 -m pip install --quiet --user --break-system-packages pillow
       - name: Generate app icon (00b)
         run: python3 scripts/make_appicon.py
       - name: Build localizations (7 langues)
