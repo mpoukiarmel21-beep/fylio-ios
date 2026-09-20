@@ -17,6 +17,14 @@ struct FylioRouteScreen: View {
             SettingsView()
         case .notifications:
             FylioPlaceholderScreen(titleKey: "settings.notifications")
+        case .files:
+            FilesView()
+        case .music:
+            MusicView()
+        case .gallery:
+            GalleryView()
+        case .history:
+            HistoryView()
         case .qrScanner:
             QRScannerView()
         case .progress(let id):

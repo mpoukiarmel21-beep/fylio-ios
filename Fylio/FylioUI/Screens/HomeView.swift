@@ -130,7 +130,9 @@ struct HomeView: View {
         FylioGlassCard {
             VStack(alignment: .leading, spacing: 14) {
                 HStack {
-                    FylioSectionHeader("home.transferHistory")
+                    FylioSectionHeader("home.transferHistory") {
+                        app.route = .history
+                    }
                     if !app.history.isEmpty {
                         Button {
                             app.clearHistory { toast = String(localized: "history.cleared") }

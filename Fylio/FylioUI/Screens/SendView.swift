@@ -28,7 +28,7 @@ struct SendView: View {
         .navigationTitle(String(localized: "send.title"))
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $previewItem) { file in
-            FilePreviewSheet(file: file)
+            FylioFilePreviewSheet(file: file)
         }
         .fileImporter(isPresented: $showImporter,
                       allowedContentTypes: [.image, .movie, .audio, .pdf, .data],

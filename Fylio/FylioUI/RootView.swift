@@ -19,7 +19,8 @@ struct RootView: View {
     }
 }
 
-/// Onglets principaux : Accueil, Fichiers, Galerie, Musique, Historique.
+/// Onglets principaux : Accueil, Fichiers, Musique, Galerie.
+/// (L'Historique n'est plus un onglet — accessible via l'Accueil « Voir tout ».)
 struct MainTabView: View {
     @EnvironmentObject var app: AppViewModel
     @State private var pendingIncoming: IncomingTransferRequest?
@@ -33,15 +34,12 @@ struct MainTabView: View {
                 FilesView()
                     .tag(FylioRoute.files)
                     .tabItem { Label(String(localized: "tab.files"), systemImage: "folder.fill") }
-                GalleryView()
-                    .tag(FylioRoute.gallery)
-                    .tabItem { Label(String(localized: "tab.gallery"), systemImage: "photo.on.rectangle") }
                 MusicView()
                     .tag(FylioRoute.music)
                     .tabItem { Label(String(localized: "tab.music"), systemImage: "music.note") }
-                HistoryView()
-                    .tag(FylioRoute.history)
-                    .tabItem { Label(String(localized: "tab.history"), systemImage: "clock.arrow.circlepath") }
+                GalleryView()
+                    .tag(FylioRoute.gallery)
+                    .tabItem { Label(String(localized: "tab.gallery"), systemImage: "photo.on.rectangle") }
             }
             .tint(FylioPalette.electricBlue)
             .navigationDestination(for: FylioRoute.self) { route in
@@ -53,6 +51,14 @@ struct MainTabView: View {
         }
         .sheet(isPresented: $app.showMascotGuide) {
             MascotGuideSheet()
+        }
+        .fullScreenCover(item: $app.fileToPreview) { file in
+            FylioFilePreviewSheet(file: file)
+        }
+        .sheet(item: $app.fileToShare) { file in
+            if let url = file.fileURL {
+                ShareSheet(items: [url])
+            }
         }
         .onChange(of: app.incomingRequests.count) { count in
             guard count > 0, pendingIncoming == nil else { return }
