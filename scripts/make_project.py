@@ -65,7 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: maxim-lobanov/setup-xcode@v1
-        with: { xcode-version: "16.1" }
+        with: { xcode-version: "16.4" }
       - name: Install xcodegen
         run: brew install xcodegen
       - name: Fetch design assets (personnages, logos, objets animés)
