@@ -30,7 +30,7 @@ public final class FylioQRPairingService: @unchecked Sendable {
     public func generatePairingPayload(identity: FylioIdentity,
                                        host: String,
                                        port: UInt16) throws -> String {
-        let (ephemeralPrivate, ephemeralPublic) = FylioCrypto.ephemeralPair()
+        let (ephemeralPrivate, ephemeralPublic) = try FylioCrypto.ephemeralPair()
         let publicKeyB64 = ephemeralPublic.base64EncodedString()
         lock.lock()
         ephemeralStore[publicKeyB64] = ephemeralPrivate  // clé privée LOCALE uniquement
@@ -85,9 +85,9 @@ public final class FylioQRPairingService: @unchecked Sendable {
         let peerKey = try Curve25519.KeyAgreement.PublicKey(rawRepresentation: peerData)
         return try local.sharedSecretFromKeyAgreement(with: peerKey)
             .hkdfDerivedSymmetricKey(using: SHA256.self,
+                                     salt: sessionSalt,
                                      sharedInfo: Data("fylio-qr-session-v1".utf8),
-                                     outputByteCount: 32,
-                                     salt: sessionSalt)
+                                     outputByteCount: 32)
     }
 
     /// Purge les clés éphémères expirées (bonne pratique mémoire).

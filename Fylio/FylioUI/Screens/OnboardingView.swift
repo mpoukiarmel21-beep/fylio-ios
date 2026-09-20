@@ -116,7 +116,7 @@ struct OnboardingView: View {
     private func permissionRow(_ index: Int) -> some View {
         let granted = index < app.permissionStates.count && app.permissionStates[index] == .granted
         let denied = index < app.permissionStates.count && app.permissionStates[index] == .denied
-        return Button { app.requestPermission(index) } label: {
+        return Button { app.requestPermission(index: index) } label: {
             HStack(spacing: 14) {
                 Image(systemName: permissionIcon(index))
                     .font(.system(size: 20, weight: .semibold))

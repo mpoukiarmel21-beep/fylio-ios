@@ -155,7 +155,7 @@ public actor FylioSession {
     /// sessionID émis par le pair) : mode mDNS → clé déterministe de session,
     /// mode QR → ECDH via la clé éphémère scannée.
     /// `onIncoming` = décision de l'utilisateur (ou auto si appareil de confiance).
-    public func acceptIncoming(on conn: NWConnection,
+    func acceptIncoming(on conn: NWConnection,
                                keyResolver: @escaping (UUID) throws -> SymmetricKey,
                                storage: FylioStorage,
 onIncoming: @escaping @Sendable (
@@ -218,7 +218,7 @@ onIncoming: @escaping @Sendable (
             reportProgress()
         }
         // Vérification du hash total du fichier
-        guard FylioCrypto.sha256OfFile(destination) == manifest.totalSHA256 else {
+        guard try FylioCrypto.sha256OfFile(destination) == manifest.totalSHA256 else {
             throw SessionError.manifestMismatch
         }
         try storage.finalizeReceivedFile(manifest: manifest, at: destination)

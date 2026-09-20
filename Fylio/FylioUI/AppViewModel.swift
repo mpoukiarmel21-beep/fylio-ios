@@ -303,7 +303,7 @@ final class AppViewModel: ObservableObject {
 
     func startSendFlow(selected: Set<UUID>) {
         pendingFilesToSend = allFileItems.filter { selected.contains($0.id) }
-        if !path.isEmpty { path.append(FylioRoute.devices) } else { path.append(.devices) }
+        path.append(FylioRoute.devices)
     }
 
     func startTransfer(to peer: FylioPeer) {
@@ -336,7 +336,7 @@ final class AppViewModel: ObservableObject {
             do {
                 // Mode mDNS : clé déterministe par session (même des deux côtés).
                 // Mode QR : l'ECDH réel remplacera ceci lors de l'intégration QR.
-                let key = FylioSession.defaultSessionKey(sessionID: session.sessionIdentifier)
+                let key = FylioSession.defaultSessionKey(sessionID: await session.sessionIdentifier)
                 try await session.send(files: files, to: peer, sessionKey: key)
             } catch {
                 NSLog("[Fylio] send error: \(error)")

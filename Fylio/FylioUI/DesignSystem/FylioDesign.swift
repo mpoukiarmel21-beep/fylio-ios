@@ -56,7 +56,7 @@ public struct FylioBackground: View {
                 : LinearGradient(colors: [FylioPalette.whiteIce, FylioPalette.paleBlue],
                                  startPoint: .topLeading, endPoint: .bottomTrailing))
             RadialGradient(colors: [Color.white.opacity(0.9), .clear],
-                           center: UnitPoint(x: 0.5, y: 0.3), radius: 500)
+                           center: UnitPoint(x: 0.5, y: 0.3), startRadius: 0, endRadius: 500)
             // Formes organiques translucides (rubans de verre discrets)
             Circle().fill(FylioPalette.brightBlue.opacity(0.18))
                 .blur(radius: 60)

@@ -36,15 +36,14 @@ public actor FylioDiscovery {
         params.allowLocalEndpointReuse = true
         let listener = try NWListener(using: .tcp, on: NWEndpoint.Port(rawValue: port)!)
         // TXT : métadonnées publiques uniquement + ID d'appareil (BUG #3 — indispensable).
-        let txt: NWTXTRecord = [
-            "v": "1",
-            "id": identity?.deviceID.uuidString ?? "",
-            "num": identity?.fylioNumber ?? "",
-            "name": identity?.displayName ?? "",
-            "pf": identity?.platform.rawValue ?? "",
-            "fp": identity?.publicKeyFingerprint ?? "",
-            "av": String(identity?.avatarID ?? 1)
-        ]
+        var txt = NWTXTRecord()
+        txt["v"] = "1"
+        txt["id"] = identity?.deviceID.uuidString ?? ""
+        txt["num"] = identity?.fylioNumber ?? ""
+        txt["name"] = identity?.displayName ?? ""
+        txt["pf"] = identity?.platform.rawValue ?? ""
+        txt["fp"] = identity?.publicKeyFingerprint ?? ""
+        txt["av"] = String(identity?.avatarID ?? 1)
         listener.service = NWListener.Service(name: identity?.fylioNumber,
                                               type: Self.serviceType,
                                               txtRecord: txt)
@@ -84,11 +83,7 @@ public actor FylioDiscovery {
     /// (BUG #3 — lecture Data → String, l'UUID vient du champ "id".)
     private func peerFromTXT(txt: NWTXTRecord) -> FylioPeer? {
         func field(_ k: String) -> String? {
-            guard let entry = txt[k] else { return nil }
-            switch entry {
-            case .string(let s): return s
-            case .data(let d): return String(data: d, encoding: .utf8)
-            }
+            txt[k]
         }
         guard let devID = UUID(uuidString: field("id") ?? ""),
               let num = field("num"), let fp = field("fp") else { return nil }

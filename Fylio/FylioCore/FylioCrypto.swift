@@ -35,9 +35,9 @@ public final class FylioCrypto: @unchecked Sendable {
         let peerKey = try Curve25519.KeyAgreement.PublicKey(rawRepresentation: peerPublicKey)
         let shared = try privateKey.sharedSecretFromKeyAgreement(with: peerKey)
         return shared.hkdfDerivedSymmetricKey(using: SHA256.self,
+                                              salt: sessionSalt,
                                               sharedInfo: Data("fylio-session-v1".utf8),
-                                              outputByteCount: 32,
-                                              salt: sessionSalt)
+                                              outputByteCount: 32)
     }
 
     /// Clé QR : la paire éphémère est transportée dans le QR (publiques seules).
