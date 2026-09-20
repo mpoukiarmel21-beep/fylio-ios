@@ -1,0 +1,45 @@
+name: Build Fylio IPA
+on:
+  push: { branches: [main] }
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with: { xcode-version: "16.1" }
+      - name: Install xcodegen
+        run: brew install xcodegen
+      - name: Fetch design assets (personnages, logos, objets animés)
+        run: python3 scripts/fetch_assets.py
+      - name: Install Pillow (génération icône)
+        run: python3 -m pip install --quiet pillow
+      - name: Generate app icon (00b)
+        run: python3 scripts/make_appicon.py
+      - name: Build localizations (7 langues)
+        run: python3 scripts/build_localizable.py
+      - name: Generate Xcode project
+        run: python3 scripts/make_project.py
+      - name: Build archive (unsigned)
+        run: |
+          mkdir -p build
+          xcodebuild archive \
+            -project Fylio.xcodeproj -scheme Fylio \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/Fylio.xcarchive \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" CODE_SIGN_ENTITLEMENTS=""
+      - name: Package IPA
+        run: |
+          mkdir -p build/Payload
+          cp -r build/Fylio.xcarchive/Products/Applications/Fylio.app build/Payload/
+          cd build && zip -r Fylio-unsigned.ipa Payload
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fylio-unsigned-IPA
+          path: build/Fylio-unsigned.ipa
+          retention-days: 90

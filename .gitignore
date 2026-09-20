@@ -1,0 +1,9 @@
+.DS_Store
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+Fylio.xcodeproj/
+*.xcworkspace/
+AGENT-HANDOFF.md
+__pycache__/

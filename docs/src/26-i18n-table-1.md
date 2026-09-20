@@ -1,0 +1,67 @@
+# FYLIO — `scripts/build_localizable.py` (génère proprement les 7 langues, zéro JSON manuel)
+
+```python
+#!/usr/bin/env python3
+"""Fylio — Générateur de Localizable.xcstrings (7 langues).
+Construit le catalogue de traductions complet à partir d'une table Python,
+pas de JSON rédigé à la main. Usage : python3 scripts/build_localizable.py
+"""
+
+import json
+from pathlib import Path
+
+LANGS = ["en", "zh-Hans", "hi", "es", "fr", "ar", "pt"]
+
+# Table des traductions : clé → {langue: texte}
+# Format des clés : "famille.clé" (identiques aux appels String(localized:) du code Swift).
+TABLE = {
+    "common.seeAll":        {"en": "See all",      "zh-Hans": "查看全部", "hi": "सभी देखें", "es": "Ver todo",       "fr": "Voir tout",     "ar": "عرض الكل",      "pt": "Ver tudo"},
+    "common.search":        {"en": "Search",       "zh-Hans": "搜索",     "hi": "खोजें",    "es": "Buscar",         "fr": "Rechercher",    "ar": "بحث",           "pt": "Pesquisar"},
+    "common.preview":       {"en": "Preview",      "zh-Hans": "预览",     "hi": "पूर्वावलोकन","es": "Vista previa",  "fr": "Aperçu",        "ar": "معاينة",        "pt": "Pré-visualizar"},
+    "common.create":        {"en": "Create",       "zh-Hans": "创建",     "hi": "बनाएँ",     "es": "Crear",          "fr": "Créer",         "ar": "إنشاء",         "pt": "Criar"},
+    "common.cancel":        {"en": "Cancel",       "zh-Hans": "取消",     "hi": "रद्द करें", "es": "Cancelar",       "fr": "Annuler",       "ar": "إلغاء",         "pt": "Cancelar"},
+    "common.close":         {"en": "Close",        "zh-Hans": "关闭",     "hi": "बंद करें",  "es": "Cerrar",         "fr": "Fermer",        "ar": "إغلاق",         "pt": "Fechar"},
+
+    "home.hello %@ 👋":     {"en": "Hello %@ 👋",  "zh-Hans": "你好 %@ 👋", "hi": "नमस्ते %@ 👋", "es": "Hola %@ 👋",  "fr": "Bonjour %@ 👋", "ar": "مرحبا %@ 👋",   "pt": "Olá %@ 👋"},
+    "home.tagline":         {"en": "Your files, everywhere with you.", "zh-Hans": "您的文件，随时随地。", "hi": "आपकी फ़ाइलें, हर जगह आपके साथ।", "es": "Tus archivos, en todas partes contigo.", "fr": "Vos fichiers, partout avec vous.", "ar": "ملفاتك، في كل مكان معك.", "pt": "Seus arquivos, em todo lugar com você."},
+    "home.alwaysConnected": {"en": "Always connected", "zh-Hans": "始终在线", "hi": "हमेशा जुड़े", "es": "Siempre conectado", "fr": "Toujours connecté", "ar": "متصل دائماً", "pt": "Sempre conectado"},
+    "home.send":            {"en": "Send",         "zh-Hans": "发送",     "hi": "भेजें",    "es": "Enviar",         "fr": "Envoyer",       "ar": "إرسال",         "pt": "Enviar"},
+    "home.send.subtitle":   {"en": "Share files",  "zh-Hans": "分享文件",  "hi": "फ़ाइलें साझा करें", "es": "Compartir archivos", "fr": "Partager des fichiers", "ar": "مشاركة الملفات", "pt": "Compartilhar arquivos"},
+    "home.receive":         {"en": "Receive",      "zh-Hans": "接收",     "hi": "प्राप्त करें","es": "Recibir",       "fr": "Recevoir",      "ar": "استلام",        "pt": "Receber"},
+    "home.receive.subtitle":{"en": "Wait for a transfer", "zh-Hans": "等待传输", "hi": "स्थानांतरण की प्रतीक्षा करें", "es": "Esperar una transferencia", "fr": "Attendre un transfert", "ar": "انتظر التحويل", "pt": "Aguardar transferência"},
+    "home.recentDevices":   {"en": "Recent devices", "zh-Hans": "最近的设备", "hi": "हाल के उपकरण", "es": "Dispositivos recientes", "fr": "Appareils récents", "ar": "الأجهزة الحديثة", "pt": "Dispositivos recentes"},
+    "home.transferHistory": {"en": "Transfer history", "zh-Hans": "传输历史", "hi": "स्थानांतरण इतिहास", "es": "Historial de transferencias", "fr": "Historique des transferts", "ar": "سجل التحويلات", "pt": "Histórico de transferências"},
+
+    "onboarding.welcome.title":   {"en": "Welcome to Fylio", "zh-Hans": "欢迎使用 Fylio", "hi": "Fylio में आपका स्वागत है", "es": "Bienvenido a Fylio", "fr": "Bienvenue sur Fylio", "ar": "مرحبا بك في Fylio", "pt": "Bem-vindo ao Fylio"},
+    "onboarding.welcome.subtitle":{"en": "Transfer files between all your devices, fast and simply.", "zh-Hans": "在所有设备之间快速简单地传输文件。", "hi": "अपने सभी उपकरणों के बीच तेज़ और आसान फ़ाइल स्थानांतरण।", "es": "Transfiere archivos entre todos tus dispositivos, rápido y simple.", "fr": "Transférez des fichiers entre tous vos appareils, vite et simplement.", "ar": "انقل الملفات بين جميع أجهزتك بسرعة وبساطة.", "pt": "Transfira arquivos entre todos os seus dispositivos, rápido e simples."},
+    "onboarding.avatar.title":    {"en": "Choose your avatar", "zh-Hans": "选择您的头像", "hi": "अपना अवतार चुनें", "es": "Elige tu avatar", "fr": "Choisissez votre avatar", "ar": "اختر صورتك الرمزية", "pt": "Escolha seu avatar"},
+    "onboarding.name.title":      {"en": "Name your device", "zh-Hans": "命名您的设备", "hi": "अपने उपकरण का नाम दें", "es": "Nombra tu dispositivo", "fr": "Nommez votre appareil", "ar": "سمِّ جهازك", "pt": "Dê um nome ao seu dispositivo"},
+    "onboarding.name.subtitle":   {"en": "Other devices will see this name.", "zh-Hans": "其他设备将看到此名称。", "hi": "अन्य उपकरण इस नाम को देखेंगे।", "es": "Otros dispositivos verán este nombre.", "fr": "Les autres appareils verront ce nom.", "ar": "سترى الأجهزة الأخرى هذا الاسم.", "pt": "Outros dispositivos verão este nome."},
+    "onboarding.name.placeholder":{"en": "e.g. Alex's iPhone", "zh-Hans": "例如：Alex 的 iPhone", "hi": "उदा. एलेक्स का iPhone", "es": "p. ej., iPhone de Alex", "fr": "ex. iPhone d'Alex", "ar": "مثال: هاتف أليكس", "pt": "ex. iPhone do Alex"},
+    "onboarding.name.suggestion": {"en": "Use device name", "zh-Hans": "使用设备名称", "hi": "उपकरण नाम का उपयोग करें", "es": "Usar nombre del dispositivo", "fr": "Utiliser le nom de l'appareil", "ar": "استخدم اسم الجهاز", "pt": "Usar nome do dispositivo"},
+    "onboarding.permissions.title":   {"en": "Allow permissions", "zh-Hans": "允许权限", "hi": "अनुमतियाँ दें", "es": "Permitir permisos", "fr": "Autoriser les permissions", "ar": "اسمح بالأذونات", "pt": "Permitir permissões"},
+    "onboarding.permissions.0.title":  {"en": "Notifications", "zh-Hans": "通知", "hi": "सूचनाएँ", "es": "Notificaciones", "fr": "Notifications", "ar": "الإشعارات", "pt": "Notificações"},
+    "onboarding.permissions.0.subtitle": {"en": "Know when a transfer arrives", "zh-Hans": "传输到达时通知您", "hi": "स्थानांतरण आने पर पता चलता है", "es": "Saber cuándo llega una transferencia", "fr": "Savoir quand un transfert arrive", "ar": "اعرف متى يصل التحويل", "pt": "Saber quando chega uma transferência"},
+    "onboarding.permissions.1.title":  {"en": "Photos", "zh-Hans": "照片", "hi": "तस्वीरें", "es": "Fotos", "fr": "Photos", "ar": "الصور", "pt": "Fotos"},
+    "onboarding.permissions.1.subtitle": {"en": "Send your photos and videos", "zh-Hans": "发送您的照片和视频", "hi": "अपनी तस्वीरें और वीडियो भेजें", "es": "Envía tus fotos y videos", "fr": "Envoyez vos photos et vidéos", "ar": "أرسل صورك ومقاطعك", "pt": "Envie suas fotos e vídeos"},
+    "onboarding.permissions.2.title":  {"en": "Files", "zh-Hans": "文件", "hi": "फ़ाइलें", "es": "Archivos", "fr": "Fichiers", "ar": "الملفات", "pt": "Arquivos"},
+    "onboarding.permissions.2.subtitle": {"en": "Access documents to share", "zh-Hans": "访问要共享的文档", "hi": "साझा करने के लिए दस्तावेज़ एक्सेस करें", "es": "Acceder a documentos para compartir", "fr": "Accéder aux documents à partager", "ar": "الوصول إلى الملفات للمشاركة", "pt": "Acessar documentos para compartilhar"},
+    "onboarding.permissions.allow":    {"en": "Allow", "zh-Hans": "允许", "hi": "अनुमति दें", "es": "Permitir", "fr": "Autoriser", "ar": "السماح", "pt": "Permitir"},
+    "onboarding.permissions.granted": {"en": "Granted", "zh-Hans": "已授权", "hi": "अनुमति मिली", "es": "Concedido", "fr": "Accordé", "ar": "تم السماح", "pt": "Concedido"},
+    "onboarding.methods.title":    {"en": "Transfer methods", "zh-Hans": "传输方式", "hi": "स्थानांतरण विधियाँ", "es": "Métodos de transferencia", "fr": "Méthodes de transfert", "ar": "طرق التحويل", "pt": "Métodos de transferência"},
+    "onboarding.methods.wifi":     {"en": "Same Wi-Fi network", "zh-Hans": "同一 Wi-Fi 网络", "hi": "एक ही Wi-Fi नेटवर्क", "es": "Misma red Wi-Fi", "fr": "Même réseau Wi-Fi", "ar": "نفس شبكة Wi-Fi", "pt": "Mesma rede Wi-Fi"},
+    "onboarding.methods.qr":      {"en": "QR code", "zh-Hans": "二维码", "hi": "QR कोड", "es": "Código QR", "fr": "Code QR", "ar": "رمز QR", "pt": "Código QR"},
+    "onboarding.methods.hotspot": {"en": "Local access point", "zh-Hans": "本地热点", "hi": "स्थानीय हॉटस्पॉट", "es": "Punto de acceso local", "fr": "Point d'accès local", "ar": "نقطة وصول محلية", "pt": "Ponto de acesso local"},
+    "onboarding.methods.usb":     {"en": "USB cable", "zh-Hans": "USB 数据线", "hi": "USB केबल", "es": "Cable USB", "fr": "Câble USB", "ar": "كابل USB", "pt": "Cabo USB"},
+    "onboarding.methods.remote":  {"en": "Remote over Internet", "zh-Hans": "互联网远程", "hi": "इंटरनेट पर दूरस्थ", "es": "Remoto por Internet", "fr": "À distance via Internet", "ar": "عن بعد عبر الإنترنت", "pt": "Remoto pela Internet"},
+    "onboarding.methods.registered": {"en": "Registered devices", "zh-Hans": "已注册设备", "hi": "पंजीकृत उपकरण", "es": "Dispositivos registrados", "fr": "Appareils enregistrés", "ar": "الأجهزة المسجلة", "pt": "Dispositivos registrados"},
+    "onboarding.start":           {"en": "Start", "zh-Hans": "开始", "hi": "शुरू करें", "es": "Comenzar", "fr": "Commencer", "ar": "ابدأ", "pt": "Começar"},
+    "onboarding.next":            {"en": "Next", "zh-Hans": "下一步", "hi": "अगला", "es": "Siguiente", "fr": "Suivant", "ar": "التالي", "pt": "Próximo"},
+
+    "devices.title":       {"en": "Recent devices", "zh-Hans": "最近的设备", "hi": "हाल के उपकरण", "es": "Dispositivos recientes", "fr": "Appareils récents", "ar": "الأجهزة الحديثة", "pt": "Dispositivos recentes"},
+    "devices.empty.title": {"en": "No devices yet", "zh-Hans": "还没有设备", "hi": "अभी कोई उपकरण नहीं", "es": "Aún no hay dispositivos", "fr": "Aucun appareil pour le moment", "ar": "لا توجد أجهزة بعد", "pt": "Ainda não há dispositivos"},
+    "devices.empty.subtitle": {"en": "Devices you transfer with will appear here.", "zh-Hans": "您传输的设备将显示在这里。", "hi": "जिन उपकरणों से आप स्थानांतरित करते हैं वे यहाँ दिखेंगे।", "es": "Los dispositivos con los que transfieras aparecerán aquí.", "fr": "Les appareils avec lesquels vous transférez apparaîtront ici.", "ar": "ستظهر هنا الأجهزة التي تنقل إليها.", "pt": "Os dispositivos com os quais você transfere aparecerão aqui."},
+    "devices.rename":      {"en": "Rename", "zh-Hans": "重命名", "hi": "नाम बदलें", "es": "Renombrar", "fr": "Renommer", "ar": "إعادة تسمية", "pt": "Renomear"},
+    "devices.delete":      {"en": "Delete", "zh-Hans": "删除", "hi": "मिटाएँ", "es": "Eliminar", "fr": "Supprimer", "ar": "حذف", "pt": "Excluir"},
+
+    "send.title":       {"en": "Send", "zh-Hans": "发送", "hi": "भेजें", "es": "Enviar", "fr": "Envoyer", "ar": "إ
