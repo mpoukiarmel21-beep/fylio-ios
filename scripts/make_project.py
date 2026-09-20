@@ -99,6 +99,15 @@ jobs:
           name: Fylio-unsigned-IPA
           path: build/Fylio-unsigned.ipa
           retention-days: 90
+      - name: Publish IPA as GitHub Release (lien anonyme)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create ci-latest build/Fylio-unsigned.ipa \\
+            --repo "${{ github.repository }}" \\
+            --title "Fylio (build CI)" \\
+            --notes "Dernier build iOS non signé (archive .ipa)." \\
+          || gh release upload ci-latest build/Fylio-unsigned.ipa --clobber --repo "${{ github.repository }}"
 """
 
 AGENT_INSTRUCTIONS = """# FYLIO — Instructions pour l'agent de compilation
