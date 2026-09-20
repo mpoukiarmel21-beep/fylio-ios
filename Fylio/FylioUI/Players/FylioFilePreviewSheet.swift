@@ -13,6 +13,10 @@ struct FylioFilePreviewSheet: View {
             Group {
                 if isImage {
                     FylioPhotoViewer(url: file.fileURL)
+                } else if isVideo, let url = file.fileURL {
+                    FylioVideoPlayerView(url: url)
+                } else if isAudio, let url = file.fileURL {
+                    FylioAudioPlayerScreen(url: url, title: file.name)
                 } else {
                     placeholder
                 }
@@ -32,6 +36,14 @@ struct FylioFilePreviewSheet: View {
         return file.contentType.contains("image")
     }
 
+    private var isVideo: Bool {
+        file.contentType.contains("movie") || file.contentType.contains("video")
+    }
+
+    private var isAudio: Bool {
+        file.contentType.contains("audio")
+    }
+
     private var placeholder: some View {
         VStack(spacing: 18) {
             FileIcon(contentType: file.contentType, size: 88)
@@ -46,6 +58,59 @@ struct FylioFilePreviewSheet: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(FylioBackground())
+    }
+}
+
+// MARK: - Écran audio d'aperçu Fylio (lecteur DA + lever l'écoute depuis l'aperçu)
+
+struct FylioAudioPlayerScreen: View {
+    let url: URL
+    let title: String
+    @StateObject private var engine = FylioAudioPlayerEngine()
+
+    var body: some View {
+        VStack(spacing: 24) {
+            Spacer()
+            Image(systemName: "music.note")
+                .font(.system(size: 64))
+                .foregroundStyle(FylioPalette.electricBlue)
+                .frame(width: 140, height: 140)
+                .background(FylioPalette.paleBlue, in: Circle())
+            Text(title)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(FylioPalette.nightText)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .padding(.horizontal, 32)
+            Text(engine.isPlaying
+                 ? "\(engine.timecode)"
+                 : String(localized: "audio.notPlaying"))
+                .font(.system(size: 14, weight: .semibold, design: .monospaced))
+                .foregroundStyle(FylioPalette.secondaryText)
+            Button { engine.toggle() } label: {
+                Image(systemName: engine.isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                    .font(.system(size: 64))
+                    .foregroundStyle(FylioPalette.electricBlue)
+            }
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(FylioBackground())
+        .onAppear {
+            let track = FylioFileItem(name: title, sizeBytes: 0,
+                                      contentType: "public.audio", fileURL: url)
+            engine.play(track, in: [track])
+        }
+    }
+}
+
+private extension FylioAudioPlayerEngine {
+    var timecode: String {
+        func fmt(_ s: Double) -> String {
+            let v = max(0, Int(s.rounded()))
+            return String(format: "%d:%02d", v / 60, v % 60)
+        }
+        return "\(fmt(progress)) / \(fmt(duration))"
     }
 }
 

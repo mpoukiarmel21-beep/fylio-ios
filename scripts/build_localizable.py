@@ -65,6 +65,7 @@ TABLE = {
     "music.empty":      {"en": "No music found", "zh-Hans": "未找到音乐", "hi": "कोई संगीत नहीं मिला", "es": "No se encontró música", "fr": "Aucune musique trouvée", "ar": "لا توجد موسيقى", "pt": "Nenhuma música encontrada"},
     "music.nowPlaying": {"en": "Now playing", "zh-Hans": "正在播放", "hi": "अभी चल रहा है", "es": "Reproduciendo", "fr": "En cours de lecture", "ar": "قيد التشغيل", "pt": "A tocar agora"},
     "music.playlist":   {"en": "Playlist", "zh-Hans": "播放列表", "hi": "प्लेलिस्ट", "es": "Lista de reproducción", "fr": "Playlist", "ar": "قائمة التشغيل", "pt": "Lista de reprodução"},
+    "audio.notPlaying": {"en": "Not playing", "zh-Hans": "未播放", "hi": "चल नहीं रहा", "es": "Sin reproducción", "fr": "À l'arrêt", "ar": "لا يوجد تشغيل", "pt": "Sem reprodução"},
 
     # ── History ──
     "history.title":    {"en": "History", "zh-Hans": "历史记录", "hi": "इतिहास", "es": "Historial", "fr": "Historique", "ar": "السجل", "pt": "Histórico"},
