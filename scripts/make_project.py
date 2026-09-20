@@ -25,6 +25,7 @@ targets:
         TARGETED_DEVICE_FAMILY: "1,2"
         CODE_SIGNING_ALLOWED: "NO"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_ON_DEMAND_RESOURCES: "NO"
     info:
       path: Fylio/Info.plist
       properties:
