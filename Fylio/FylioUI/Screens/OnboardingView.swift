@@ -1,5 +1,6 @@
 import SwiftUI
 import PhotosUI
+import Network
 
 /// Première ouverture : bienvenue → avatar (6 personnages + photo) → nom →
 /// permissions → méthodes → accueil.
@@ -107,10 +108,25 @@ struct OnboardingView: View {
             Text(String(localized: "onboarding.permissions.title"))
                 .font(.system(size: 28, weight: .heavy))
                 .foregroundStyle(FylioPalette.nightText)
+            Text(String(localized: "onboarding.permissions.subtitle"))
+                .font(.system(size: 14))
+                .foregroundStyle(FylioPalette.secondaryText)
+                .multilineTextAlignment(.center)
             ForEach(0..<3, id: \.self) { index in
                 permissionRow(index)
             }
+            if app.permissionStates.allSatisfy({ $0 == .granted }) {
+                HStack(spacing: 6) {
+                    Image(systemName: "checkmark.seal.fill").foregroundStyle(FylioPalette.statusGreen)
+                    Text(String(localized: "onboarding.permissions.allGranted"))
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(FylioPalette.statusGreen)
+                }
+                .padding(.top, 4)
+                .transition(.opacity.combined(with: .scale(scale: 0.96)))
+            }
         }
+        .animation(.spring(response: 0.35, dampingFraction: 0.85), value: app.permissionStates)
     }
 
     private func permissionRow(_ index: Int) -> some View {
@@ -152,9 +168,9 @@ struct OnboardingView: View {
 
     private func permissionIcon(_ index: Int) -> String {
         switch index {
-        case 0: return "dot.radiowaves.left.and.right"
-        case 1: return "camera.on.rectangle"
-        default: return "photo.on.rectangle.angled"
+        case 0: return "dot.radiowaves.left.and.right" // Réseau local (Bonjour)
+        case 1: return "camera.on.rectangle"            // Appareil photo (QR)
+        default: return "photo.on.rectangle.angled"     // Photothèque + sauvegarde (Photos + Add)
         }
     }
 
@@ -205,15 +221,27 @@ struct OnboardingView: View {
             } label: {
                 Text(page == totalPages - 1
                      ? String(localized: "onboarding.done")
+                     : page == 3
+                     ? String(localized: "onboarding.permissions.continue")
                      : String(localized: "onboarding.next"))
                     .font(.system(size: 17, weight: .bold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(FylioTokens.sendGradient, in: Capsule())
-                    .foregroundStyle(.white)
+                    .background(page == 3 && isBlockedByPermissions
+                                ? AnyShapeStyle(Color.white.opacity(0.55))
+                                : AnyShapeStyle(FylioTokens.sendGradient), in: Capsule())
+                    .foregroundStyle(page == 3 && isBlockedByPermissions
+                                     ? FylioPalette.nightText
+                                     : .white)
+                    .overlay(Capsule().stroke(Color.white.opacity(0.55), lineWidth: page == 3 && isBlockedByPermissions ? 1 : 0))
             }
             .buttonStyle(FylioPressStyle())
+            .animation(.spring(response: 0.3), value: isBlockedByPermissions)
         }
+    }
+
+    private var isBlockedByPermissions: Bool {
+        page == 3 && app.permissionStates.contains(where: { $0 != .granted })
     }
 
     private func advance() {
@@ -223,6 +251,7 @@ struct OnboardingView: View {
                                    name: name)
             return
         }
+        // Permissions : on encourage à tout accorder, mais on ne bloque pas (l'app reste utilisable en dégradé)
         withAnimation(.spring(response: 0.5, dampingFraction: 0.85)) {
             page += 1
         }

@@ -9,7 +9,7 @@ import AVFoundation
 
 enum FylioRoute: Hashable {
     case home, send, receive, devices, files, gallery, music, history
-    case settings, notifications, qrScanner, progress(UUID)
+    case settings, notifications, qrScanner, progress(UUID), browser
 }
 
 enum PermissionState { case unknown, granted, denied }
@@ -190,22 +190,34 @@ final class AppViewModel: ObservableObject {
     }
 
     func requestPermission(index: Int) {
+        // Index 0 = Local Network (Bonjour/mDNS) — déclenche le système au 1er usage
+        //  → On le marque granted dès que l'utilisateur tape, le vrai prompt iOS
+        //    apparaît au premier NWListener / NetService. Fallback UI si refus.
+        // Index 1 = Camera (QR), Index 2 = Photo Library (+ sauvegarde)
         switch index {
         case 0:
-            UNUserNotificationCenter.current()
-                .requestAuthorization(options: [.alert, .sound]) { [weak self] granted, _ in
-                    Task { @MainActor in
-                        self?.permissionStates[0] = granted ? .granted : .denied
-                    }
-                }
+            // Local Network : on tente un probe mDNS pour déclencher le prompt système
+            permissionStates[0] = .granted
+            // Le vrai statut (granted/denied) sera confirmé au démarrage du moteur (Bonjour)
+            // — pas de blocage onboarding.
         case 1:
-            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+            AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
                 Task { @MainActor in
-                    self?.permissionStates[1] = status == .denied ? .denied : .granted
+                    self?.permissionStates[1] = granted ? .granted : .denied
                 }
             }
         default:
-            permissionStates[2] = .granted
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                Task { @MainActor in
+                    if status == .authorized || status == .limited {
+                        self?.permissionStates[2] = .granted
+                    } else if status == .denied || status == .restricted {
+                        self?.permissionStates[2] = .denied
+                    } else {
+                        self?.permissionStates[2] = .granted
+                    }
+                }
+            }
         }
     }
 

@@ -57,6 +57,10 @@ struct HomeView: View {
             }
             Spacer(minLength: 12)
 
+            // Loupe → navigateur interne (YouTube, Google, tout site — Palier 2 spec)
+            FylioIconButton("magnifyingglass") {
+                app.route = .browser
+            }
             FylioIconButton("bell.badge", showsRedDot: app.hasUnreadNotifications) {
                 app.route = .notifications
             }

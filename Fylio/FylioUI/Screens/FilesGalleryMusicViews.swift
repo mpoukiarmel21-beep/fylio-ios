@@ -66,6 +66,7 @@ struct FilesView: View {
     private func tabItem(_ key: String, _ idx: Int) -> some View {
         Button {
             withAnimation(.spring(response: 0.3)) { selectedTab = idx }
+            FylioHaptics.tap()
         } label: {
             Text(String(localized: String.LocalizationValue(key)))
                 .font(.system(size: 15, weight: .semibold))
@@ -77,7 +78,7 @@ struct FilesView: View {
                             : AnyShapeStyle(.ultraThinMaterial),
                             in: Capsule())
         }
-        .buttonStyle(FylioPressStyle())
+        .buttonStyle(FylioPressStyle(haptic: false))
     }
 
     private var fileList: some View {
@@ -215,7 +216,7 @@ struct GalleryView: View {
     }
 }
 
-// MARK: - MUSIQUE (doc 17) — onglet « Musique » avec mini-lecteur
+// MARK: - MUSIQUE (Palier 2 — 3 sections DA bleu vitré, même maquette)
 
 struct MusicView: View {
     @EnvironmentObject var app: AppViewModel
@@ -223,133 +224,177 @@ struct MusicView: View {
     @State private var currentTrack: FylioFileItem?
     @State private var isPlaying = false
 
-    private var audioFiles: [FylioFileItem] {
-        let audio = app.allFileItems.filter { $0.contentType.contains("audio") }
-        guard !searchText.isEmpty else { return audio }
-        return audio.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    // Toutes les musiques/audio de l'appareil (public.audio, mp3, m4a, musique + audio général)
+    private var allAudio: [FylioFileItem] {
+        app.allFileItems.filter { item in
+            let t = item.contentType.lowercased()
+            return t.contains("audio") || t.contains("music")
+               || ["mp3","m4a","aac","flac","wav","ogg","opus"].contains((item.name as NSString).pathExtension.lowercased())
+        }
+    }
+    private var filteredAllAudio: [FylioFileItem] {
+        guard !searchText.isEmpty else { return allAudio }
+        return allAudio.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
+    // Section "Musique récente" : 8 plus récents (modificationDate)
+    private var recentAudio: [FylioFileItem] {
+        allAudio.sorted { modDate($0) > modDate($1) }.prefix(8).map { $0 }
+    }
+
+    private func modDate(_ f: FylioFileItem) -> Date {
+        guard let u = f.fileURL, let v = try? u.resourceValues(forKeys: [.contentModificationDateKey]) else { return .distantPast }
+        return v.contentModificationDate ?? .distantPast
     }
 
     var body: some View {
         ZStack {
             FylioBackground()
-            VStack(spacing: 0) {
-                header
-                searchBar
-                trackList
-                if let track = currentTrack {
-                    miniPlayer(track)
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 16) {
+                    hero
+                    FylioSearchBar(text: $searchText, placeholder: String(localized: "common.search"))
+                        .padding(.horizontal, FylioTokens.screenMargin)
+
+                    // ① En lecture — widget bleu vitré (DA maquette, même style bleu profond + vitré)
+                    if let track = currentTrack {
+                        nowPlayingCard(track)
+                    }
+
+                    // ② Musique récente (remplace "Playlists populaires")
+                    musicSection(titleKey: "music.recentSection", files: recentAudio)
+
+                    // ③ Toutes les musiques de l'appareil (remplace "Récemment écoutés" limité)
+                    musicSection(titleKey: "music.allSection", files: filteredAllAudio)
+
+                    // ④ Widget lecteur (barre flottante) — reste en bas, même DA
+                    if let track = currentTrack {
+                        miniPlayer(track)
+                            .padding(.horizontal, FylioTokens.screenMargin)
+                    }
                 }
+                .padding(.vertical, 16)
             }
         }
         .navigationTitle(String(localized: "music.title"))
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private var header: some View {
+    // Header : personnage re-cadré (60→72, padding réduit, bien centré)
+    private var hero: some View {
         HStack {
             Image("music_character")
-                .resizable().scaledToFit().frame(height: 60)
-            Spacer()
+                .resizable().scaledToFit()
+                .frame(height: 72)
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            Spacer(minLength: 12)
+            VStack(alignment: .trailing, spacing: 4) {
+                Text(String(localized: "music.hero.title"))
+                    .font(.system(size: 17, weight: .bold))
+                    .foregroundStyle(FylioPalette.nightText)
+                Text(String(localized: "music.hero.subtitle"))
+                    .font(.system(size: 13)).foregroundStyle(FylioPalette.secondaryText)
+            }
         }
         .padding(.horizontal, FylioTokens.screenMargin)
         .padding(.top, 8)
     }
 
-    private var searchBar: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(FylioPalette.secondaryText)
-            TextField(String(localized: "common.search"), text: $searchText)
+    // Carte "En lecture" — bleu profond + vitré + blur (même DA que maquette 1-Pages Musique)
+    private func nowPlayingCard(_ track: FylioFileItem) -> some View {
+        HStack(spacing: 14) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(FylioPalette.electricBlue.opacity(0.14))
+                    .frame(width: 64, height: 64)
+                FileIcon(contentType: track.contentType, size: 36)
+            }
+            VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "music.nowPlaying"))
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(FylioPalette.secondaryBlue)
+                Text(track.name).font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(FylioPalette.nightText).lineLimit(1)
+                Text(ByteCountFormatter.string(fromByteCount: track.sizeBytes, countStyle: .file))
+                    .font(.system(size: 12)).foregroundStyle(FylioPalette.secondaryText)
+            }
+            Spacer()
+            Button { togglePlay() } label: {
+                Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                    .font(.system(size: 44)).foregroundStyle(FylioPalette.electricBlue)
+            }.buttonStyle(FylioPressStyle())
         }
-        .padding(12)
-        .background(.ultraThinMaterial,
-                    in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .padding(14)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(Color.white.opacity(0.60), lineWidth: 1))
+        .shadow(color: FylioTokens.shadowGlass, radius: 14, y: 6)
         .padding(.horizontal, FylioTokens.screenMargin)
-        .padding(.vertical, 10)
     }
 
-    private var trackList: some View {
-        ScrollView(showsIndicators: false) {
-            LazyVStack(spacing: 10) {
-                if audioFiles.isEmpty {
-                    FylioEmptyState(character: "empty_music",
-                                    titleKey: "music.empty.title",
-                                    subtitleKey: "music.empty.subtitle")
-                } else {
-                    ForEach(audioFiles) { file in
-                        Button { playTrack(file) } label: {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle().fill(FylioPalette.paleBlue)
-                                    Image(systemName: "music.note")
-                                        .foregroundStyle(FylioPalette.electricBlue)
-                                }
-                                .frame(width: 46, height: 46)
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text(file.name)
-                                        .font(.system(size: 16, weight: .semibold))
-                                        .foregroundStyle(FylioPalette.nightText)
-                                        .lineLimit(1)
-                                    Text(ByteCountFormatter.string(fromByteCount: file.sizeBytes,
-                                                                    countStyle: .file))
-                                        .font(.system(size: 12))
-                                        .foregroundStyle(FylioPalette.secondaryText)
-                                }
-                                Spacer()
-                                if currentTrack?.id == file.id, isPlaying {
-                                    Image(systemName: "waveform")
-                                        .foregroundStyle(FylioPalette.electricBlue)
-                                }
+    private func musicSection(titleKey: String, files: [FylioFileItem]) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(String(localized: String.LocalizationValue(titleKey)))
+                .font(.system(size: 18, weight: .heavy))
+                .foregroundStyle(FylioPalette.nightText)
+                .padding(.horizontal, FylioTokens.screenMargin)
+            if files.isEmpty {
+                FylioEmptyState(character: "empty_music", titleKey: "music.empty.title", subtitleKey: "music.empty.subtitle")
+                    .padding(.horizontal, FylioTokens.screenMargin)
+            } else {
+                ForEach(files) { file in
+                    Button { playTrack(file) } label: {
+                        HStack(spacing: 14) {
+                            ZStack {
+                                Circle().fill(FylioPalette.paleBlue)
+                                Image(systemName: "music.note").foregroundStyle(FylioPalette.electricBlue)
+                            }.frame(width: 46, height: 46)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(file.name).font(.system(size: 15, weight: .semibold))
+                                    .foregroundStyle(FylioPalette.nightText).lineLimit(1)
+                                Text(ByteCountFormatter.string(fromByteCount: file.sizeBytes, countStyle: .file))
+                                    .font(.system(size: 11)).foregroundStyle(FylioPalette.secondaryText)
                             }
-                            .padding(14)
-                            .background(.ultraThinMaterial,
-                                        in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            Spacer()
+                            if currentTrack?.id == file.id, isPlaying {
+                                Image(systemName: "waveform").foregroundStyle(FylioPalette.electricBlue)
+                            } else {
+                                Image(systemName: "play.circle").foregroundStyle(FylioPalette.secondaryText.opacity(0.6))
+                            }
                         }
-                        .buttonStyle(FylioPressStyle())
-                    }
+                        .padding(13)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(Color.white.opacity(0.55), lineWidth: 1))
+                    }.buttonStyle(FylioPressStyle())
+                    .padding(.horizontal, FylioTokens.screenMargin)
                 }
             }
-            .padding(.horizontal, FylioTokens.screenMargin)
-            .padding(.vertical, 16)
         }
     }
 
     private func miniPlayer(_ track: FylioFileItem) -> some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 12) {
             Button { togglePlay() } label: {
                 Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                    .font(.system(size: 42))
-                    .foregroundStyle(FylioPalette.electricBlue)
-            }
-            Text(track.name)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(FylioPalette.nightText)
-                .lineLimit(1)
+                    .font(.system(size: 40)).foregroundStyle(FylioPalette.electricBlue)
+            }.buttonStyle(FylioPressStyle())
+            Text(track.name).font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(FylioPalette.nightText).lineLimit(1)
             Spacer()
             if track.contentType.contains("movie") || track.contentType.contains("video") {
                 Button { extractAudioFromVideo(track) } label: {
-                    Image(systemName: "waveform.badge.plus")
-                        .font(.system(size: 22))
-                        .foregroundStyle(FylioPalette.secondaryBlue)
-                }
+                    Image(systemName: "waveform.badge.plus").font(.system(size: 20)).foregroundStyle(FylioPalette.secondaryBlue)
+                }.buttonStyle(FylioPressStyle())
             }
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 12)
-        .background(.ultraThinMaterial)
+        .padding(.horizontal, 16).padding(.vertical, 12)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(Color.white.opacity(0.55), lineWidth: 1))
+        .shadow(color: FylioTokens.shadowGlass, radius: 10, y: 4)
     }
 
     private func playTrack(_ file: FylioFileItem) {
-        currentTrack = file
-        isPlaying = true
-        app.playAudio(file)
+        currentTrack = file; isPlaying = true; app.playAudio(file)
     }
-
-    private func togglePlay() {
-        isPlaying.toggle()
-        app.toggleAudioPlayback()
-    }
-
+    private func togglePlay() { isPlaying.toggle(); app.toggleAudioPlayback() }
     private func extractAudioFromVideo(_ file: FylioFileItem) {
         guard let url = file.fileURL else { return }
         FylioAudioExtractor.extractAudio(from: url, progress: { _ in }, completion: { _ in })
