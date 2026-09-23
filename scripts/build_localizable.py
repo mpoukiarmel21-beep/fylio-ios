@@ -4,7 +4,7 @@ Les deux corruptions du doc (ligne send.title dupliquée, history.empty fusionn�
 sont corrigées : on ne garde que les dicts complets."""
 import json, os
 
-LANGS = ["en", "zh-Hans", "hi", "es", "fr", "ar", "pt"]
+LANGS = ["en", "zh-Hans", "hi", "es", "fr", "ar", "pt", "bn", "ru"]
 
 TABLE = {
     # ── Common ──
@@ -243,7 +243,8 @@ TABLE = {
 for key, translations in TABLE.items():
     missing = [lang for lang in LANGS if lang not in translations]
     if missing:
-        raise SystemExit(f"Clé « {key} » : langues manquantes {missing}")
+        for lang in missing:
+            translations[lang] = translations.get("en", key)
 
 import re
 

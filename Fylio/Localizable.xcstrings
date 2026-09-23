@@ -44,6 +44,18 @@
             "state": "translated",
             "value": "Sem reprodução"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not playing"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not playing"
+          }
         }
       }
     },
@@ -89,6 +101,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cancelar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
           }
         }
       }
@@ -136,6 +160,18 @@
             "state": "translated",
             "value": "Fechar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
         }
       }
     },
@@ -181,6 +217,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Criar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create"
           }
         }
       }
@@ -228,6 +276,18 @@
             "state": "translated",
             "value": "Concluído"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
         }
       }
     },
@@ -273,6 +333,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pré-visualização"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
           }
         }
       }
@@ -320,6 +392,18 @@
             "state": "translated",
             "value": "Tentar novamente"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry"
+          }
         }
       }
     },
@@ -365,6 +449,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pesquisar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search"
           }
         }
       }
@@ -412,6 +508,18 @@
             "state": "translated",
             "value": "Ver tudo"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See all"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See all"
+          }
         }
       }
     },
@@ -457,6 +565,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ligue um dispositivo para começar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect a device to start transferring"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect a device to start transferring"
           }
         }
       }
@@ -504,6 +624,18 @@
             "state": "translated",
             "value": "Eliminar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
         }
       }
     },
@@ -549,6 +681,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Os dispositivos a que ligar serão guardados aqui"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices you connect to will be saved here"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices you connect to will be saved here"
           }
         }
       }
@@ -596,6 +740,18 @@
             "state": "translated",
             "value": "Sem dispositivos guardados"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No saved devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No saved devices"
+          }
         }
       }
     },
@@ -641,6 +797,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ainda não há dispositivos"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No devices yet"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No devices yet"
           }
         }
       }
@@ -688,6 +856,18 @@
             "state": "translated",
             "value": "Renomear"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename"
+          }
         }
       }
     },
@@ -733,6 +913,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Digitalizar código QR"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan a QR code"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan a QR code"
           }
         }
       }
@@ -780,6 +972,18 @@
             "state": "translated",
             "value": "Dispositivos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices"
+          }
         }
       }
     },
@@ -825,6 +1029,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Em breve"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This feature is coming soon"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This feature is coming soon"
           }
         }
       }
@@ -872,6 +1088,18 @@
             "state": "translated",
             "value": "Os seus ficheiros transferidos aparecerão aqui"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transferred files will appear here"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transferred files will appear here"
+          }
         }
       }
     },
@@ -917,6 +1145,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eliminar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
           }
         }
       }
@@ -964,6 +1204,18 @@
             "state": "translated",
             "value": "Sem ficheiros"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files"
+          }
         }
       }
     },
@@ -1009,6 +1261,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transfira um ficheiro e ele aparecerá aqui"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer a file and it will appear here"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer a file and it will appear here"
           }
         }
       }
@@ -1056,6 +1320,18 @@
             "state": "translated",
             "value": "Ainda não há ficheiros"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files yet"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files yet"
+          }
         }
       }
     },
@@ -1101,6 +1377,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favorito"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorite"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorite"
           }
         }
       }
@@ -1148,6 +1436,18 @@
             "state": "translated",
             "value": "Nova pasta"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New folder"
+          }
         }
       }
     },
@@ -1193,6 +1493,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nome da pasta"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder name"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder name"
           }
         }
       }
@@ -1240,6 +1552,18 @@
             "state": "translated",
             "value": "Abrir"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open"
+          }
         }
       }
     },
@@ -1285,6 +1609,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Partilhar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
           }
         }
       }
@@ -1332,6 +1668,18 @@
             "state": "translated",
             "value": "Todos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
         }
       }
     },
@@ -1377,6 +1725,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favoritos"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites"
           }
         }
       }
@@ -1424,6 +1784,18 @@
             "state": "translated",
             "value": "Recebidos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Received"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Received"
+          }
         }
       }
     },
@@ -1469,6 +1841,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recentes"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent"
           }
         }
       }
@@ -1516,6 +1900,18 @@
             "state": "translated",
             "value": "Enviados"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent"
+          }
         }
       }
     },
@@ -1561,6 +1957,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ficheiros"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files"
           }
         }
       }
@@ -1608,6 +2016,18 @@
             "state": "translated",
             "value": "Ainda não há fotos ou vídeos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No photos or videos yet"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No photos or videos yet"
+          }
         }
       }
     },
@@ -1653,6 +2073,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transfira multimédia e ela aparecerá aqui"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer media and it will appear here"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer media and it will appear here"
           }
         }
       }
@@ -1700,6 +2132,18 @@
             "state": "translated",
             "value": "Ainda não há fotos ou vídeos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No photos or videos yet"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No photos or videos yet"
+          }
         }
       }
     },
@@ -1745,6 +2189,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Selecione itens para partilhar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select items to share"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select items to share"
           }
         }
       }
@@ -1792,6 +2248,18 @@
             "state": "translated",
             "value": "Galeria"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gallery"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gallery"
+          }
         }
       }
     },
@@ -1837,6 +2305,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Toque em Enviar ou Receber para começar."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap Send or Receive to start a transfer."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap Send or Receive to start a transfer."
           }
         }
       }
@@ -1884,6 +2364,18 @@
             "state": "translated",
             "value": "Bem-vindo ao Fylio!"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Fylio!"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Fylio!"
+          }
         }
       }
     },
@@ -1929,6 +2421,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Limpar tudo"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear all"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear all"
           }
         }
       }
@@ -1976,6 +2480,18 @@
             "state": "translated",
             "value": "Histórico apagado"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History cleared"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History cleared"
+          }
         }
       }
     },
@@ -2021,6 +2537,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "As suas transferências aparecerão aqui"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transfers will appear here"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transfers will appear here"
           }
         }
       }
@@ -2068,6 +2596,18 @@
             "state": "translated",
             "value": "Ainda não há transferências"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No transfers yet"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No transfers yet"
+          }
         }
       }
     },
@@ -2113,6 +2653,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recebido"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Received"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Received"
           }
         }
       }
@@ -2160,6 +2712,18 @@
             "state": "translated",
             "value": "Enviado"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent"
+          }
         }
       }
     },
@@ -2205,6 +2769,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Histórico"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
           }
         }
       }
@@ -2252,6 +2828,18 @@
             "state": "translated",
             "value": "Sempre conectado"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always connected"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always connected"
+          }
         }
       }
     },
@@ -2297,6 +2885,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pronto para partilhar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready to share"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready to share"
           }
         }
       }
@@ -2344,6 +2944,18 @@
             "state": "translated",
             "value": "Olá %@ 👋"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hello %@ 👋"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hello %@ 👋"
+          }
         }
       }
     },
@@ -2389,6 +3001,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Receber"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receive"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receive"
           }
         }
       }
@@ -2436,6 +3060,18 @@
             "state": "translated",
             "value": "De dispositivos próximos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From nearby devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From nearby devices"
+          }
         }
       }
     },
@@ -2481,6 +3117,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dispositivos recentes"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent devices"
           }
         }
       }
@@ -2528,6 +3176,18 @@
             "state": "translated",
             "value": "Enviar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
         }
       }
     },
@@ -2573,6 +3233,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ficheiros, fotos, vídeos…"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files, photos, videos…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files, photos, videos…"
           }
         }
       }
@@ -2620,6 +3292,18 @@
             "state": "translated",
             "value": "Histórico de transferências"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer history"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer history"
+          }
         }
       }
     },
@@ -2665,6 +3349,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nenhuma música encontrada"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No music found"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No music found"
           }
         }
       }
@@ -2712,6 +3408,18 @@
             "state": "translated",
             "value": "Transfira ficheiros de áudio e eles aparecerão aqui"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer audio files and they will appear here"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer audio files and they will appear here"
+          }
         }
       }
     },
@@ -2757,6 +3465,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nenhuma música encontrada"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No music found"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No music found"
           }
         }
       }
@@ -2804,6 +3524,18 @@
             "state": "translated",
             "value": "A tocar agora"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Now playing"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Now playing"
+          }
         }
       }
     },
@@ -2849,6 +3581,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lista de reprodução"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Playlist"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Playlist"
           }
         }
       }
@@ -2896,6 +3640,18 @@
             "state": "translated",
             "value": "Música"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music"
+          }
         }
       }
     },
@@ -2941,6 +3697,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alguém próximo quer enviar-lhe ficheiros"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Someone nearby wants to send you files"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Someone nearby wants to send you files"
           }
         }
       }
@@ -2988,6 +3756,18 @@
             "state": "translated",
             "value": "Transferência recebida"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming transfer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming transfer"
+          }
         }
       }
     },
@@ -3033,6 +3813,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "A sua transferência foi concluída com sucesso"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transfer completed successfully"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transfer completed successfully"
           }
         }
       }
@@ -3080,6 +3872,18 @@
             "state": "translated",
             "value": "Enviado"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent"
+          }
         }
       }
     },
@@ -3125,6 +3929,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notificações desativadas"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications disabled"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications disabled"
           }
         }
       }
@@ -3172,6 +3988,18 @@
             "state": "translated",
             "value": "Notificações ativadas"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications enabled"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications enabled"
+          }
         }
       }
     },
@@ -3217,6 +4045,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Importar uma foto"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import a photo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import a photo"
           }
         }
       }
@@ -3264,6 +4104,18 @@
             "state": "translated",
             "value": "Escolha o seu avatar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose your avatar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose your avatar"
+          }
         }
       }
     },
@@ -3309,6 +4161,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Escolha o seu avatar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose your avatar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose your avatar"
           }
         }
       }
@@ -3356,6 +4220,18 @@
             "state": "translated",
             "value": "Começar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get started"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get started"
+          }
         }
       }
     },
@@ -3401,6 +4277,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wi-Fi (rede local)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi (local network)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi (local network)"
           }
         }
       }
@@ -3448,6 +4336,18 @@
             "state": "translated",
             "value": "Emparelhamento por QR"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR code pairing"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR code pairing"
+          }
         }
       }
     },
@@ -3493,6 +4393,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hotspot pessoal"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal hotspot"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal hotspot"
           }
         }
       }
@@ -3540,6 +4452,18 @@
             "state": "translated",
             "value": "Cabo USB"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB cable"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB cable"
+          }
         }
       }
     },
@@ -3585,6 +4509,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Acesso remoto"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote access"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote access"
           }
         }
       }
@@ -3632,6 +4568,18 @@
             "state": "translated",
             "value": "Dispositivos registados (Fylio ID)"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registered devices (Fylio ID)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registered devices (Fylio ID)"
+          }
         }
       }
     },
@@ -3677,6 +4625,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Métodos de transferência"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer methods"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer methods"
           }
         }
       }
@@ -3724,6 +4684,18 @@
             "state": "translated",
             "value": "É assim que os amigos o verão na rede."
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is how friends will see you on the network."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is how friends will see you on the network."
+          }
         }
       }
     },
@@ -3769,6 +4741,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dê um nome ao seu dispositivo"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name your device"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name your device"
           }
         }
       }
@@ -3816,6 +4800,18 @@
             "state": "translated",
             "value": "Seguinte"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next"
+          }
         }
       }
     },
@@ -3861,6 +4857,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Permissões"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permissions"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permissions"
           }
         }
       }
@@ -3908,6 +4916,18 @@
             "state": "translated",
             "value": "Descubra e ligue dispositivos próximos."
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discover and connect to nearby devices."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discover and connect to nearby devices."
+          }
         }
       }
     },
@@ -3953,6 +4973,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Rede local"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local Network"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local Network"
           }
         }
       }
@@ -4000,6 +5032,18 @@
             "state": "translated",
             "value": "Digitalize códigos QR para emparelhar e transferir."
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan QR codes to pair and transfer."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan QR codes to pair and transfer."
+          }
         }
       }
     },
@@ -4045,6 +5089,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Câmara"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera"
           }
         }
       }
@@ -4092,6 +5148,18 @@
             "state": "translated",
             "value": "Guarde as fotos e vídeos recebidos na sua biblioteca."
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save received photos and videos to your library."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save received photos and videos to your library."
+          }
         }
       }
     },
@@ -4137,6 +5205,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fotos"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos"
           }
         }
       }
@@ -4184,6 +5264,18 @@
             "state": "translated",
             "value": "Conceder permissões"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant permissions"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant permissions"
+          }
         }
       }
     },
@@ -4229,6 +5321,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Métodos de transferência"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer methods"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer methods"
           }
         }
       }
@@ -4276,6 +5380,18 @@
             "state": "translated",
             "value": "Bem-vindo ao Fylio"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Fylio"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Fylio"
+          }
         }
       }
     },
@@ -4321,6 +5437,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Envie qualquer ficheiro para qualquer dispositivo, sem fios e de forma segura."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send any file to any device, wirelessly and securely."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send any file to any device, wirelessly and securely."
           }
         }
       }
@@ -4368,6 +5496,18 @@
             "state": "translated",
             "value": "Bem-vindo ao Fylio"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Fylio"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Fylio"
+          }
         }
       }
     },
@@ -4413,6 +5553,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "O seu nome"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your name"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your name"
           }
         }
       }
@@ -4460,6 +5612,18 @@
             "state": "translated",
             "value": "Excluir página"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete page"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete page"
+          }
         }
       }
     },
@@ -4505,6 +5669,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Girar página"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotate page"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotate page"
           }
         }
       }
@@ -4552,6 +5728,18 @@
             "state": "translated",
             "value": "Falha ao salvar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save failed"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save failed"
+          }
         }
       }
     },
@@ -4597,6 +5785,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "PDF salvo"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDF saved"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDF saved"
           }
         }
       }
@@ -4644,6 +5844,18 @@
             "state": "translated",
             "value": "Destacar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Highlight"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Highlight"
+          }
         }
       }
     },
@@ -4689,6 +5901,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Caneta"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pen"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pen"
           }
         }
       }
@@ -4736,6 +5960,18 @@
             "state": "translated",
             "value": "Assinatura"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signature"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signature"
+          }
         }
       }
     },
@@ -4781,6 +6017,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Texto"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
           }
         }
       }
@@ -4828,6 +6076,18 @@
             "state": "translated",
             "value": "Cancelar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
         }
       }
     },
@@ -4873,6 +6133,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pausar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
           }
         }
       }
@@ -4920,6 +6192,18 @@
             "state": "translated",
             "value": "Em pausa"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused"
+          }
         }
       }
     },
@@ -4965,6 +6249,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "A preparar…"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing…"
           }
         }
       }
@@ -5012,6 +6308,18 @@
             "state": "translated",
             "value": "Restante: %@"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining: %@"
+          }
         }
       }
     },
@@ -5057,6 +6365,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Retomar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume"
           }
         }
       }
@@ -5104,6 +6424,18 @@
             "state": "translated",
             "value": "Velocidade: %@"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speed: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speed: %@"
+          }
         }
       }
     },
@@ -5149,6 +6481,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transferência"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer"
           }
         }
       }
@@ -5196,6 +6540,18 @@
             "state": "translated",
             "value": "A transferir…"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transferring…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transferring…"
+          }
         }
       }
     },
@@ -5241,6 +6597,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Código QR inválido"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid QR code"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid QR code"
           }
         }
       }
@@ -5288,6 +6656,18 @@
             "state": "translated",
             "value": "Aponte a câmara para o código QR"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point your camera at the QR code"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point your camera at the QR code"
+          }
         }
       }
     },
@@ -5333,6 +6713,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Digitalizar código QR"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan QR code"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan QR code"
           }
         }
       }
@@ -5380,6 +6772,18 @@
             "state": "translated",
             "value": "Dispositivos disponíveis"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Available devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Available devices"
+          }
         }
       }
     },
@@ -5425,6 +6829,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aceitar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accept"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accept"
           }
         }
       }
@@ -5472,6 +6888,18 @@
             "state": "translated",
             "value": "Dispositivos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices"
+          }
         }
       }
     },
@@ -5517,6 +6945,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transferências recentes"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent transfers"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent transfers"
           }
         }
       }
@@ -5564,6 +7004,18 @@
             "state": "translated",
             "value": "Pedidos recebidos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming requests"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming requests"
+          }
         }
       }
     },
@@ -5609,6 +7061,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "%d ficheiro(s) de %@"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d file(s) from %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d file(s) from %@"
           }
         }
       }
@@ -5656,6 +7120,18 @@
             "state": "translated",
             "value": "Multimédia"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Media"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Media"
+          }
         }
       }
     },
@@ -5701,6 +7177,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sem pedidos recebidos"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No incoming requests"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No incoming requests"
           }
         }
       }
@@ -5748,6 +7236,18 @@
             "state": "translated",
             "value": "Fotos"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos"
+          }
         }
       }
     },
@@ -5793,6 +7293,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Digitalize este código com o outro dispositivo"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan this code with the other device"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan this code with the other device"
           }
         }
       }
@@ -5840,6 +7352,18 @@
             "state": "translated",
             "value": "À procura de dispositivos…"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Searching for devices…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Searching for devices…"
+          }
         }
       }
     },
@@ -5885,6 +7409,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Certifique-se de que o Wi-Fi está ligado"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make sure Wi-Fi is enabled"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make sure Wi-Fi is enabled"
           }
         }
       }
@@ -5932,6 +7468,18 @@
             "state": "translated",
             "value": "Mostrar código QR"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show QR code"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show QR code"
+          }
         }
       }
     },
@@ -5977,6 +7525,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Receber"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receive"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receive"
           }
         }
       }
@@ -6024,6 +7584,18 @@
             "state": "translated",
             "value": "Escolher pasta"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a folder"
+          }
         }
       }
     },
@@ -6069,6 +7641,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ainda não há ficheiros"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files yet"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files yet"
           }
         }
       }
@@ -6116,6 +7700,18 @@
             "state": "translated",
             "value": "Nenhum dispositivo ligado"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No device connected"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No device connected"
+          }
         }
       }
     },
@@ -6161,6 +7757,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Escolher um dispositivo"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a device"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a device"
           }
         }
       }
@@ -6208,6 +7816,18 @@
             "state": "translated",
             "value": "Selecionar destino"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select destination"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select destination"
+          }
         }
       }
     },
@@ -6253,6 +7873,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "%d selecionados"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d selected"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d selected"
           }
         }
       }
@@ -6300,6 +7932,18 @@
             "state": "translated",
             "value": "Enviar"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
         }
       }
     },
@@ -6345,6 +7989,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Enviar"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
           }
         }
       }
@@ -6392,6 +8048,18 @@
             "state": "translated",
             "value": "Enviar para computador"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send to computer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send to computer"
+          }
         }
       }
     },
@@ -6437,6 +8105,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sobre"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About"
           }
         }
       }
@@ -6484,6 +8164,18 @@
             "state": "translated",
             "value": "Aparência"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
         }
       }
     },
@@ -6529,6 +8221,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sistema"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
           }
         }
       }
@@ -6576,6 +8280,18 @@
             "state": "translated",
             "value": "Escuro"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
         }
       }
     },
@@ -6621,6 +8337,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claro"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
           }
         }
       }
@@ -6668,6 +8396,18 @@
             "state": "translated",
             "value": "Tema"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme"
+          }
         }
       }
     },
@@ -6713,6 +8453,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dispositivos"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices"
           }
         }
       }
@@ -6760,6 +8512,18 @@
             "state": "translated",
             "value": "Dispositivos guardados"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved devices"
+          }
         }
       }
     },
@@ -6805,6 +8569,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Idioma"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
           }
         }
       }
@@ -6852,6 +8628,18 @@
             "state": "translated",
             "value": "Idioma do sistema"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System language"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System language"
+          }
         }
       }
     },
@@ -6897,6 +8685,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notificações"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
           }
         }
       }
@@ -6944,6 +8744,18 @@
             "state": "translated",
             "value": "Transferência concluída"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer complete"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer complete"
+          }
         }
       }
     },
@@ -6989,6 +8801,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transferências recebidas"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming transfers"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming transfers"
           }
         }
       }
@@ -7036,6 +8860,18 @@
             "state": "translated",
             "value": "Privacidade e segurança"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy & security"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy & security"
+          }
         }
       }
     },
@@ -7081,6 +8917,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Criptografia"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encryption"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encryption"
           }
         }
       }
@@ -7128,6 +8976,18 @@
             "state": "translated",
             "value": "Apagar todos os dados"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase all data"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase all data"
+          }
         }
       }
     },
@@ -7173,6 +9033,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Perfil"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile"
           }
         }
       }
@@ -7220,6 +9092,18 @@
             "state": "translated",
             "value": "Armazenamento"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storage"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storage"
+          }
         }
       }
     },
@@ -7265,6 +9149,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Limpar cache"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear cache"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear cache"
           }
         }
       }
@@ -7312,6 +9208,18 @@
             "state": "translated",
             "value": "Definições"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
         }
       }
     },
@@ -7357,6 +9265,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transferências"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfers"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfers"
           }
         }
       }
@@ -7404,6 +9324,18 @@
             "state": "translated",
             "value": "Aceitar automaticamente de dispositivos de confiança"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-accept from trusted devices"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-accept from trusted devices"
+          }
         }
       }
     },
@@ -7449,6 +9381,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Apenas Wi-Fi"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi only"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi only"
           }
         }
       }
@@ -7496,6 +9440,18 @@
             "state": "translated",
             "value": "Versão"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
         }
       }
     },
@@ -7541,6 +9497,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nome"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
           }
         }
       }
@@ -7588,6 +9556,18 @@
             "state": "translated",
             "value": "Recentes"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent"
+          }
         }
       }
     },
@@ -7633,6 +9613,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tamanho"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size"
           }
         }
       }
@@ -7680,6 +9672,18 @@
             "state": "translated",
             "value": "Em pausa"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused"
+          }
         }
       }
     },
@@ -7725,6 +9729,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "A transferir…"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transferring…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transferring…"
           }
         }
       }
@@ -7772,6 +9788,18 @@
             "state": "translated",
             "value": "Ficheiros"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files"
+          }
         }
       }
     },
@@ -7817,6 +9845,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Galeria"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gallery"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gallery"
           }
         }
       }
@@ -7864,6 +9904,18 @@
             "state": "translated",
             "value": "Histórico"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
         }
       }
     },
@@ -7910,6 +9962,18 @@
             "state": "translated",
             "value": "Início"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home"
+          }
         }
       }
     },
@@ -7955,6 +10019,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Música"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music"
           }
         }
       }

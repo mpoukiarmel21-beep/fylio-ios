@@ -25,20 +25,35 @@ public extension Color {
     }
 }
 
-// MARK: - Tokens (rayons, ombres, espacements — maquette)
+// MARK: - Tokens (rayons, ombres, espacements — maquette + spec vitré Palier 1)
 
 public enum FylioTokens {
     public static let screenMargin: CGFloat = 40          // 35–45 px
     public static let cornerCard: CGFloat = 28
     public static let cornerButtonBig: CGFloat = 38       // 35–40 px gros boutons
     public static let cornerButtonSmall: CGFloat = 22
+    public static let cornerSheet: CGFloat = 24
     public static let avatarHeader: CGFloat = 90
     public static let spacingSection: CGFloat = 35
     public static let shadow = Color.black.opacity(0.06)
+    public static let shadowGlass = Color(hex: 0x0A3A8A).opacity(0.06)
+    public static let shadowGlassStrong = Color(hex: 0x0A3A8A).opacity(0.10)
 
     public static let sendGradient = LinearGradient(
         colors: [FylioPalette.electricBlue, Color(hex: 0x09BDF5)],
         startPoint: .topLeading, endPoint: .bottomTrailing)
+
+    // Spec vitré Palier 1 — 52% épuré (iOS 26 Liquid Glass)
+    public static let glass52 = Color.white.opacity(0.52)
+    public static let glass68 = Color.white.opacity(0.68)
+    public static let glassBorder = Color.white.opacity(0.55)
+    public static let glassBorderStrong = Color.white.opacity(0.65)
+    public static let blurGlass: CGFloat = 22
+    public static let blurGlassSoft: CGFloat = 20
+    public static let radiusPill: CGFloat = 28
+    public static let radiusCard: CGFloat = 20
+    public static let bottomNavHeight: CGFloat = 72
+    public static let cableButtonSize: CGFloat = 56
 }
 
 // MARK: - Fond de l'application (dégradé radial + formes organiques, jamais bleu plat)
