@@ -106,7 +106,7 @@ struct SettingsView: View {
         }
     }
 
-    // MARK: Langue (7 langues + auto selon la langue du téléphone)
+    // MARK: Langue (9 langues + auto selon la langue du téléphone)
 
     private var languageSection: some View {
         section("settings.language") {
@@ -119,6 +119,8 @@ struct SettingsView: View {
                 Text("🇫🇷 Français").tag("fr")
                 Text("🇸🇦 العربية").tag("ar")
                 Text("🇵🇹 Português").tag("pt")
+                Text("🇧🇩 বাংলা").tag("bn")
+                Text("🇷🇺 Русский").tag("ru")
             } label: {
                 row(Text(String(localized: "settings.language")))
             }
