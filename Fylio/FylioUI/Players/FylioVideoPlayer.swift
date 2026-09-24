@@ -243,15 +243,14 @@ struct FylioControlsOverlay: View {
                     FylioPiPButton(player: player.avPlayer)
                     // Vidéo → Audio (extraire et jouer comme audio)
                     Button {
-                        if let url = player.avPlayer.currentItem?.asset as? AVURLAsset {
-                            let file = FylioFileItem(name: "audio.m4a", sizeBytes: 0, contentType: "public.audio", fileURL: url.url)
-                            FylioAudioExtractor.extractAudio(from: url.url, progress: { _ in }) { result in
-                                if case .success(let out) = result, let out {
+                        if let asset = player.avPlayer.currentItem?.asset as? AVURLAsset {
+                            let url = asset.url
+                            FylioAudioExtractor.extractAudio(from: url, progress: { _ in }) { result in
+                                if let r = result, case .success(let out) = r {
                                     let audio = FylioFileItem(name: out.lastPathComponent, sizeBytes: 0, contentType: "public.audio", fileURL: out)
                                     Task { @MainActor in FylioAudioRouter.shared.play(audio) }
                                 }
                             }
-                            _ = file // silence warning si extraction async
                         }
                     } label: {
                         Image(systemName: "waveform.badge.plus")
