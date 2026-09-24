@@ -29,6 +29,10 @@ struct FylioRouteScreen: View {
             QRScannerView()
         case .browser:
             BrowserView()
+        case .remoteSend:
+            RemoteSendView()
+        case .remoteReceive:
+            RemoteReceiveView()
         case .progress(let id):
             if let transfer = app.activeTransfers.first(where: { $0.id == id }) {
                 TransferProgressView(transfer: transfer)

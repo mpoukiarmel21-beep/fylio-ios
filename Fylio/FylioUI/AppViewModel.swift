@@ -10,6 +10,7 @@ import AVFoundation
 enum FylioRoute: Hashable {
     case home, send, receive, devices, files, gallery, music, history
     case settings, notifications, qrScanner, progress(UUID), browser
+    case remoteSend, remoteReceive
 }
 
 enum PermissionState { case unknown, granted, denied }
@@ -140,6 +141,8 @@ final class AppViewModel: ObservableObject {
     @Published var deviceToRename: FylioPeer?
     @Published var showMascotGuide = false
     @Published var isCableConnected = false
+    @Published var remoteKey: String = ""
+    let remoteService = FylioRemoteService()
     @Published var fileToPreview: FylioFileItem?
     @Published var fileToShare: FylioFileItem?
     private var cableMonitor: Any?
@@ -474,6 +477,13 @@ final class AppViewModel: ObservableObject {
     func reloadFiles() { allFileItems = storage.loadAllFiles() }
     func registerImportedFiles(urls: [URL]) { storage.importFiles(urls); reloadFiles() }
     func playMascottGuide() { showMascotGuide = true }
+
+    func acceptRemoteSession(_ session: FylioRemoteSession) {
+        // Palier 4 : le pair distant est matérialisé par sa clé publique
+        // La connexion réelle (WebSocket/Relay) sera branchée en Palier 5+
+        sendLocalNotification(title: String(localized: "remote.receive.found"),
+                              body: session.displayKey)
+    }
 
     // MARK: Câble — poll léger du moniteur USB (FylioUSBTransfer)
     private var cableTask: Task<Void, Never>?

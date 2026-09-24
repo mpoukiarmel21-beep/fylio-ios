@@ -16,6 +16,13 @@ struct ReceiveView: View {
                 VStack(spacing: 26) {
                     deviceIdentityCard
                     qrCard
+                    // Palier 4 : à distance (saisie clé)
+                    NavigationLink(value: FylioRoute.remoteReceive) {
+                        Label(String(localized: "remote.receive.action"), systemImage: "key.viewfinder")
+                            .font(.system(size: 15, weight: .bold)).foregroundStyle(.white)
+                            .frame(maxWidth: .infinity).padding(.vertical, 14)
+                            .background(FylioTokens.sendGradient, in: RoundedRectangle(cornerRadius: 18))
+                    }.buttonStyle(FylioPressStyle())
                     availableConnectionsCard
                     incomingRequestsCard
                 }
@@ -94,7 +101,7 @@ struct ReceiveView: View {
                         Circle()
                             .trim(from: 0, to: pulse ? 1 : 0.1)
                             .stroke(FylioPalette.electricBlue,
-                                    style: StrokeStyle(lineWidth: 3))
+                                    style: StrokeStyle(lineWidth: 3, lineCap: .round))
                             .frame(width: 46, height: 46)
                             .rotationEffect(.degrees(pulse ? 360 : 0))
                             .animation(.linear(duration: 1.6).repeatForever(autoreverses: false),

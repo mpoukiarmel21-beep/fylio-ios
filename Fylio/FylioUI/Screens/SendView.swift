@@ -164,7 +164,18 @@ struct SendView: View {
     }
 
     private var sendBar: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
+            // Palier 4 : Envoyer à distance (clé 8) — à côté du pick device
+            if !selectedFiles.isEmpty {
+                NavigationLink(value: FylioRoute.remoteSend) {
+                    Label(String(localized: "remote.send.action"), systemImage: "key.fill")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(FylioPalette.electricBlue)
+                        .padding(.horizontal, 14).padding(.vertical, 10)
+                        .background(.ultraThinMaterial, in: Capsule())
+                        .overlay(Capsule().stroke(Color.white.opacity(0.55), lineWidth: 1))
+                }
+            }
             if !selectedFiles.isEmpty {
                 Text(String(format: String(localized: "send.selectedCount"),
                             selectedFiles.count))
