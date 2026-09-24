@@ -1,6 +1,5 @@
 import SwiftUI
 import PhotosUI
-import Network
 
 /// Première ouverture : bienvenue → avatar (6 personnages + photo) → nom →
 /// permissions → méthodes → accueil.

@@ -193,21 +193,22 @@ struct GalleryView: View {
                     }
                 } else {
                     ScrollView(showsIndicators: false) {
-                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 4),
-                                             GridItem(.flexible(), spacing: 4)], spacing: 4) {
+                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 6),
+                                             GridItem(.flexible(), spacing: 6)], spacing: 6) {
                             ForEach(images) { file in
                                 if let url = file.fileURL,
                                    let data = try? Data(contentsOf: url),
                                    let image = UIImage(data: data) {
                                     Image(uiImage: image)
                                         .resizable().scaledToFill()
-                                        .frame(height: 120)
+                                        .frame(height: 130)
                                         .clipped()
+                                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                                         .onTapGesture { app.openFile(file) }
                                 }
                             }
                         }
-                        .padding(.horizontal, 8)
+                        .padding(.horizontal, 12)
                     }
                 }
             }
@@ -402,7 +403,7 @@ struct MusicView: View {
     }
 }
 
-// MARK: - HISTORIQUE (doc 17) — onglet « Historique »
+// MARK: - HISTORIQUE (onglet Historique — via Accueil Voir tout)
 
 struct HistoryView: View {
     @EnvironmentObject var app: AppViewModel

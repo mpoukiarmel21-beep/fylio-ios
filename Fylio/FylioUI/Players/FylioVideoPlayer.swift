@@ -1,5 +1,6 @@
 import SwiftUI
 import AVFoundation
+import AVKit
 
 // MARK: - LECTEUR VIDÉO FYLIO
 // Interface 100 % custom (DA Fylio) : contrôles dessinés par nous, gestes
@@ -153,9 +154,43 @@ final class FylioVideoPlayerEngine: NSObject, ObservableObject {
     }
 }
 
-// MARK: - Picture in Picture (fenêtre flottante Fylio — mode PLAYit).
-// Préparé pour T8 : un AVPictureInPictureController sera monté sur la couche
-// AVPlayerLayer réelle (via UIViewControllerRepresentable) pour activer le PiP.
+// MARK: - Picture in Picture (PLAYit) — délégation à l'AVPlayer natif
+// PiP système = fenêtre flottante par-dessus toutes les apps (même bureau).
+
+struct FylioPiPButton: View {
+    let player: AVPlayer
+    @State private var isActive = false
+
+    var body: some View {
+        Button {
+            if let pip = FylioPiPController.shared.controller(for: player) {
+                if pip.isPictureInPictureActive { pip.stopPictureInPicture() }
+                else { pip.startPictureInPicture() }
+            }
+        } label: {
+            Image(systemName: isActive ? "pip.exit" : "pip.enter")
+                .font(.system(size: 20, weight: .semibold)).foregroundStyle(.white)
+                .frame(width: 36, height: 36).background(Color.white.opacity(0.18), in: Circle())
+        }
+        .buttonStyle(FylioPressStyle(haptic: false))
+    }
+}
+
+@MainActor
+final class FylioPiPController: NSObject {
+    static let shared = FylioPiPController()
+    private var controllers: [ObjectIdentifier: AVPictureInPictureController] = [:]
+
+    func controller(for player: AVPlayer) -> AVPictureInPictureController? {
+        let id = ObjectIdentifier(player)
+        if let c = controllers[id] { return c }
+        guard let layer = player.currentItem.flatMap({ _ in AVPlayerLayer(player: player) }),
+              AVPictureInPictureController.isPictureInPictureSupported() else { return nil }
+        let c = AVPictureInPictureController(playerLayer: layer)
+        controllers[id] = c
+        return c
+    }
+}
 
 // MARK: - Overlay de contrôles — 100 % dessiné par Fylio (DA : palette + dégradé)
 
@@ -203,6 +238,24 @@ struct FylioControlsOverlay: View {
                     Button { player.rotate90() } label: {
                         Image(systemName: "rotate.right")
                             .font(.system(size: 24)).foregroundStyle(.white)
+                    }
+                    // PiP
+                    FylioPiPButton(player: player.avPlayer)
+                    // Vidéo → Audio (extraire et jouer comme audio)
+                    Button {
+                        if let url = player.avPlayer.currentItem?.asset as? AVURLAsset {
+                            let file = FylioFileItem(name: "audio.m4a", sizeBytes: 0, contentType: "public.audio", fileURL: url.url)
+                            FylioAudioExtractor.extractAudio(from: url.url, progress: { _ in }) { result in
+                                if case .success(let out) = result, let out {
+                                    let audio = FylioFileItem(name: out.lastPathComponent, sizeBytes: 0, contentType: "public.audio", fileURL: out)
+                                    Task { @MainActor in FylioAudioRouter.shared.play(audio) }
+                                }
+                            }
+                            _ = file // silence warning si extraction async
+                        }
+                    } label: {
+                        Image(systemName: "waveform.badge.plus")
+                            .font(.system(size: 22)).foregroundStyle(.white)
                     }
                     Spacer()
                     // Temps

@@ -1,6 +1,7 @@
 import SwiftUI
 import AVFoundation
 import MediaPlayer
+import Combine
 
 // MARK: - Session audio Fylio (lecture arrière-plan + écran verrouillé)
 
@@ -132,4 +133,12 @@ final class FylioAudioPlayerEngine: NSObject, ObservableObject {
             [MPNowPlayingInfoPropertyElapsedPlaybackTime: progress], uniquingKeysWith: { _, new in new }
         )
     }
+}
+
+// Router global audio (vidéo→audio : on coupe la vidéo et on joue l'audio extrait)
+@MainActor
+final class FylioAudioRouter: ObservableObject {
+    static let shared = FylioAudioRouter()
+    let engine = FylioAudioPlayerEngine()
+    func play(_ file: FylioFileItem) { engine.play(file, in: [file]) }
 }
