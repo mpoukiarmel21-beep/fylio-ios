@@ -193,11 +193,27 @@ struct SettingsView: View {
 
     private var aboutSection: some View {
         section("settings.about") {
-            row(Text("Fylio"), value: "1.0 (1)")
+            HStack {
+                Text("Fylio").font(.system(size: 16, weight: .bold)).foregroundStyle(FylioPalette.nightText)
+                Spacer()
+                if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                   let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                    Text("\(v) (\(b))").font(.system(size: 13)).foregroundStyle(FylioPalette.secondaryText)
+                } else {
+                    Text("1.0 (6)").font(.system(size: 13)).foregroundStyle(FylioPalette.secondaryText)
+                }
+            }
+            .padding(.vertical, 10)
             Image("logo_fylio")
-                .resizable().scaledToFit().frame(height: 60)
+                .resizable().scaledToFit().frame(height: 56)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 10)
+                .padding(.vertical, 8)
+            Text("Transfert local chiffré (TLS 1.3 · AES-GCM) — aucune donnée sur serveur.")
+                .font(.system(size: 12)).foregroundStyle(FylioPalette.secondaryText)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+                .padding(.bottom, 6)
         }
     }
 }

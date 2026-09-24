@@ -50,14 +50,16 @@ struct OnboardingView: View {
         VStack(spacing: 18) {
             Image("mascotte_fylio")
                 .resizable().scaledToFit()
-                .frame(width: 300, height: 300)
+                .frame(width: 280, height: 280)
+                .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
             Text(String(localized: "onboarding.welcome.title"))
-                .font(.system(size: 40, weight: .heavy))
+                .font(.system(size: 38, weight: .heavy))
                 .foregroundStyle(FylioPalette.nightText)
             Text(String(localized: "onboarding.welcome.subtitle"))
-                .font(.system(size: 16))
+                .font(.system(size: 15))
                 .foregroundStyle(FylioPalette.secondaryText)
                 .multilineTextAlignment(.center)
+                .padding(.horizontal, 12)
         }
     }
 

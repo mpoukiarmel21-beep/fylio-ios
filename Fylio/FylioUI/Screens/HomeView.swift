@@ -37,21 +37,22 @@ struct HomeView: View {
             }
             .buttonStyle(FylioPressStyle())
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 8) {
                     Text(app.identity.displayName)
-                        .font(.system(size: 37, weight: .heavy))
+                        .font(.system(size: 32, weight: .heavy))
                         .foregroundStyle(FylioPalette.nightText)
+                        .lineLimit(1)
                     Button { app.route = .settings } label: {
                         Image(systemName: "pencil")
-                            .font(.system(size: 17, weight: .semibold))
+                            .font(.system(size: 16, weight: .semibold))
                             .foregroundStyle(FylioPalette.secondaryBlue)
                     }
                 }
                 HStack(spacing: 6) {
-                    Circle().fill(FylioPalette.statusGreen).frame(width: 9, height: 9)
+                    Circle().fill(FylioPalette.statusGreen).frame(width: 8, height: 8)
                     Text(String(localized: "home.alwaysConnected"))
-                        .font(.system(size: 15, weight: .medium))
+                        .font(.system(size: 14, weight: .medium))
                         .foregroundStyle(FylioPalette.secondaryText)
                 }
             }
@@ -73,12 +74,14 @@ struct HomeView: View {
     // MARK: Message d'accueil
 
     private var greeting: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(String(format: String(localized: "home.hello"), app.identity.displayName))
-                .font(.system(size: 48, weight: .heavy))
+                .font(.system(size: 44, weight: .heavy))
                 .foregroundStyle(FylioPalette.nightText)
+                .lineLimit(2)
+                .minimumScaleFactor(0.7)
             Text(String(localized: "home.greeting"))
-                .font(.system(size: 28, weight: .medium))
+                .font(.system(size: 24, weight: .medium))
                 .foregroundStyle(FylioPalette.secondaryText)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -101,10 +104,11 @@ struct HomeView: View {
             } label: {
                 Image("mascotte_fylio")
                     .resizable().scaledToFit()
-                    .frame(width: 170, height: 200)
+                    .frame(width: 160, height: 188)
+                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             }
             .buttonStyle(FylioPressStyle())
-            .offset(x: -18, y: 10)
+            .offset(x: -16, y: 8)
         }
     }
 
