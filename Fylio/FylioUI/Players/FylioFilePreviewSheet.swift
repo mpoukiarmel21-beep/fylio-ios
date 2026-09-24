@@ -17,10 +17,9 @@ struct FylioFilePreviewSheet: View {
                     FylioVideoPlayerView(url: url)
                 } else if isAudio, let url = file.fileURL {
                     FylioAudioPlayerScreen(url: url, title: file.name)
-                } else {
-                    } else if isPDF, let url = file.fileURL {
+                } else if isPDF {
                     FylioPDFEditorView(file: file)
-                    } else {
+                } else {
                     placeholder
                 }
             }

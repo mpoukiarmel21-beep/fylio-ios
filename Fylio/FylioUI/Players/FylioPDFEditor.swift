@@ -54,7 +54,7 @@ struct FylioPDFEditorView: View {
                 pill("pdf.tool.highlight", icon: "highlighter") { annotate(.highlight) }
                 pill("pdf.tool.pen", icon: "pencil.tip") { annotate(.ink) }
                 pill("pdf.tool.text", icon: "textformat") { annotate(.text) }
-                pill("pdf.tool.signature", icon: "signature") { annotate(.signature) }
+                pill("pdf.tool.signature", icon: "signature") { annotate(.stamp) }
                 pill("pdf.rotatePage", icon: "rotate.right") { rotatePage() }
                 pill("pdf.deletePage", icon: "trash", color: FylioPalette.alertRed) { deletePage() }
             }
