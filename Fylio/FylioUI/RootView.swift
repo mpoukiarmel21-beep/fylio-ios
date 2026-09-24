@@ -19,38 +19,41 @@ struct RootView: View {
     }
 }
 
-/// Onglets principaux : Accueil, Fichiers, Musique, Galerie.
-/// (L'Historique n'est plus un onglet — accessible via l'Accueil « Voir tout ».)
+/// Onglets principaux : Accueil, Fichiers, Musique, Galerie + câble détaché.
+/// DA vitrée : bottom custom FylioBottomNav 4+1 (pas de TabView système).
 struct MainTabView: View {
     @EnvironmentObject var app: AppViewModel
+    @State private var selectedTab: FylioTab = .home
     @State private var pendingIncoming: IncomingTransferRequest?
+    @State private var showCableSheet = false
+
+    // Détection câble : Network path (côté fiable) + FileManager iTunes (fallback)
+    // Ici on s'appuie sur FylioUSBTransfer.isCableConnected (actor) via published
+    private var isCableConnected: Bool { app.isCableConnected }
 
     var body: some View {
-        NavigationStack(path: $app.path) {
-            TabView {
-                HomeView()
-                    .tag(FylioRoute.home)
-                    .tabItem { Label(String(localized: "tab.home"), systemImage: "house.fill") }
-                FilesView()
-                    .tag(FylioRoute.files)
-                    .tabItem { Label(String(localized: "tab.files"), systemImage: "folder.fill") }
-                MusicView()
-                    .tag(FylioRoute.music)
-                    .tabItem { Label(String(localized: "tab.music"), systemImage: "music.note") }
-                GalleryView()
-                    .tag(FylioRoute.gallery)
-                    .tabItem { Label(String(localized: "tab.gallery"), systemImage: "photo.on.rectangle") }
+        ZStack(alignment: .bottom) {
+            NavigationStack(path: $app.path) {
+                currentTabView
+                    .navigationDestination(for: FylioRoute.self) { route in
+                        FylioRouteScreen(route: route)
+                    }
             }
-            .tint(FylioPalette.electricBlue)
-            .navigationDestination(for: FylioRoute.self) { route in
-                FylioRouteScreen(route: route)
+            // Bottom custom vitré (au-dessus du contenu, flottante)
+            FylioBottomBar(selected: $selectedTab,
+                           isCableConnected: isCableConnected) {
+                showCableSheet = true
             }
         }
+        .ignoresSafeArea(.keyboard)
         .sheet(item: $app.deviceToRename) { peer in
             RenameDeviceSheet(peer: peer)
         }
         .sheet(isPresented: $app.showMascotGuide) {
             MascotGuideSheet()
+        }
+        .sheet(isPresented: $showCableSheet) {
+            CableStatusSheet(isConnected: isCableConnected)
         }
         .fullScreenCover(item: $app.fileToPreview) { file in
             FylioFilePreviewSheet(file: file)
@@ -75,6 +78,51 @@ struct MainTabView: View {
                     app.respondIncoming(request, accept: false)
                 })
         }
+    }
+
+    @ViewBuilder
+    private var currentTabView: some View {
+        switch selectedTab {
+        case .home: HomeView()
+        case .files: FilesView()
+        case .music: MusicView()
+        case .gallery: GalleryView()
+        }
+    }
+}
+
+// Sheet diagnostic câble (Palier 3)
+private struct CableStatusSheet: View {
+    let isConnected: Bool
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                Image(systemName: isConnected ? "cable.connector.slash" : "cable.connector")
+                    .font(.system(size: 48))
+                    .foregroundStyle(isConnected ? FylioPalette.statusGreen : FylioPalette.secondaryText)
+                Text(isConnected ? "Câble connecté" : "Aucun câble")
+                    .font(.system(size: 22, weight: .heavy)).foregroundStyle(FylioPalette.nightText)
+                Text(isConnected
+                     ? "Le transfert par câble est actif. Débranche pour revenir au Wi-Fi."
+                     : "Branche un câble USB entre ton iPhone et l'appareil cible pour un transfert direct.")
+                    .font(.system(size: 15)).foregroundStyle(FylioPalette.secondaryText)
+                    .multilineTextAlignment(.center).padding(.horizontal, 24)
+                Button(String(localized: "common.done")) { dismiss() }
+                    .font(.system(size: 17, weight: .bold)).foregroundStyle(.white)
+                    .padding(.horizontal, 40).padding(.vertical, 14)
+                    .background(FylioTokens.sendGradient, in: Capsule())
+                    .buttonStyle(FylioPressStyle())
+            }
+            .padding(32)
+            .navigationTitle("Câble")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { ToolbarItem(placement: .cancellationAction) {
+                Button(String(localized: "common.close")) { dismiss() }
+            }}
+        }
+        .presentationDetents([.medium])
     }
 }
 

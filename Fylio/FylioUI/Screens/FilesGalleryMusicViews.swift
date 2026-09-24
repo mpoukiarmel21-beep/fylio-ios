@@ -42,11 +42,12 @@ struct FilesView: View {
     private var header: some View {
         HStack {
             Image("files_character")
-                .resizable().scaledToFit().frame(height: 56)
+                .resizable().scaledToFit().frame(height: 64)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             Spacer()
         }
         .padding(.horizontal, FylioTokens.screenMargin)
-        .padding(.top, 8)
+        .padding(.top, 10)
     }
 
     private var categoryTabs: some View {

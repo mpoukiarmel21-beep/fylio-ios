@@ -139,8 +139,10 @@ final class AppViewModel: ObservableObject {
 
     @Published var deviceToRename: FylioPeer?
     @Published var showMascotGuide = false
+    @Published var isCableConnected = false
     @Published var fileToPreview: FylioFileItem?
     @Published var fileToShare: FylioFileItem?
+    private var cableMonitor: Any?
 
     private let crypto: FylioCrypto
     private let qrPairing = FylioQRPairingService()
@@ -224,6 +226,7 @@ final class AppViewModel: ObservableObject {
     // MARK: Moteur
 
     func startEngine() {
+        startCableMonitor()
         Task {
             try? await discovery.configure(identity: identity) { [weak self] peer in
                 Task { @MainActor in
@@ -471,6 +474,24 @@ final class AppViewModel: ObservableObject {
     func reloadFiles() { allFileItems = storage.loadAllFiles() }
     func registerImportedFiles(urls: [URL]) { storage.importFiles(urls); reloadFiles() }
     func playMascottGuide() { showMascotGuide = true }
+
+    // MARK: Câble — poll léger du moniteur USB (FylioUSBTransfer)
+    private var cableTask: Task<Void, Never>?
+
+    private func startCableMonitor() {
+        cableTask?.cancel()
+        cableTask = Task { [weak self] in
+            let usb = FylioUSBTransfer()
+            while !Task.isCancelled {
+                let count = await usb.scanForPCDrops()
+                await MainActor.run {
+                    // Connecté si au moins 1 drop détecté ou si la session USB est active
+                    self?.isCableConnected = count > 0
+                }
+                try? await Task.sleep(nanoseconds: 2_000_000_000)
+            }
+        }
+    }
 
     // MARK: Fichiers (doc 17) — actions sur les fichiers gérés par FylioStorage
 

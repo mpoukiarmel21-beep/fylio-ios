@@ -18,6 +18,9 @@ struct FylioFilePreviewSheet: View {
                 } else if isAudio, let url = file.fileURL {
                     FylioAudioPlayerScreen(url: url, title: file.name)
                 } else {
+                    } else if isPDF, let url = file.fileURL {
+                    FylioPDFEditorView(file: file)
+                    } else {
                     placeholder
                 }
             }
@@ -38,6 +41,10 @@ struct FylioFilePreviewSheet: View {
 
     private var isVideo: Bool {
         file.contentType.contains("movie") || file.contentType.contains("video")
+    }
+
+    private var isPDF: Bool {
+        file.contentType.contains("pdf") || file.name.lowercased().hasSuffix(".pdf")
     }
 
     private var isAudio: Bool {
