@@ -19,48 +19,70 @@ struct LanguageOnboardingView: View {
         ZStack {
             FylioBackground()
             VStack(spacing: 20) {
-                Image("logo_fylio").resizable().scaledToFit()
-                    .frame(width: 88, height: 88)
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .shadow(color: .black.opacity(0.14), radius: 10, y: 6)
-                Text("Choisis ta langue").font(.system(size: 26, weight: .heavy)).foregroundStyle(.white)
-                Text("Cette app parle 9 langues — change à tout moment dans Réglages.")
-                    .font(.system(size: 13)).foregroundStyle(.white.opacity(0.82))
-                    .multilineTextAlignment(.center).padding(.horizontal, 24)
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                        ForEach(languages, id: \.code) { lang in
-                            Button {
-                                selected = lang.code
-                                languageOverride = lang.code
-                                UserDefaults.standard.set([lang.code], forKey: "AppleLanguages")
-                                FylioHaptics.tap()
-                            } label: {
-                                HStack(spacing: 8) {
-                                    Text(lang.flag).font(.system(size: 20))
-                                    Text(lang.label).font(.system(size: 14, weight: .semibold))
-                                        .foregroundStyle(selected == lang.code ? .white : FylioPalette.nightText)
-                                        .lineLimit(1)
-                                }
-                                .frame(maxWidth: .infinity).padding(.vertical, 14)
-                                .background(selected == lang.code ? FylioTokens.sendGradient : AnyShapeStyle(.ultraThinMaterial),
-                                            in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Color.white.opacity(0.6), lineWidth: 1))
-                            }.buttonStyle(FylioPressStyle(haptic: false))
-                        }
-                    }.padding(.horizontal, 20)
-                }
-                Button {
-                    languageOverride = selected
-                    dismiss()
-                } label: {
-                    Text("Continuer  →").font(.system(size: 17, weight: .bold)).foregroundStyle(.white)
-                        .frame(maxWidth: .infinity).padding(.vertical, 16)
-                        .background(FylioTokens.sendGradient, in: Capsule())
-                }.padding(.horizontal, 20).buttonStyle(FylioPressStyle())
+                logoHeader
+                subtitle
+                languageGrid
+                continueButton
             }
             .padding(.vertical, 24)
         }
+    }
+
+    private var logoHeader: some View {
+        Image("logo_fylio").resizable().scaledToFit()
+            .frame(width: 88, height: 88)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .shadow(color: .black.opacity(0.14), radius: 10, y: 6)
+    }
+
+    private var subtitle: some View {
+        VStack(spacing: 6) {
+            Text("Choisis ta langue").font(.system(size: 26, weight: .heavy)).foregroundStyle(.white)
+            Text("Cette app parle 9 langues — change à tout moment dans Réglages.")
+                .font(.system(size: 13)).foregroundStyle(.white.opacity(0.82))
+                .multilineTextAlignment(.center).padding(.horizontal, 24)
+        }
+    }
+
+    private var languageGrid: some View {
+        ScrollView(showsIndicators: false) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                ForEach(languages, id: \.code) { lang in
+                    languageCell(lang)
+                }
+            }.padding(.horizontal, 20)
+        }
+    }
+
+    private func languageCell(_ lang: (code: String, label: String, flag: String)) -> some View {
+        Button {
+            selected = lang.code
+            languageOverride = lang.code
+            UserDefaults.standard.set([lang.code], forKey: "AppleLanguages")
+            FylioHaptics.tap()
+        } label: {
+            HStack(spacing: 8) {
+                Text(lang.flag).font(.system(size: 20))
+                Text(lang.label).font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(selected == lang.code ? .white : FylioPalette.nightText)
+                    .lineLimit(1)
+            }
+            .frame(maxWidth: .infinity).padding(.vertical, 14)
+            .background(selected == lang.code ? FylioTokens.sendGradient : AnyShapeStyle(.ultraThinMaterial),
+                        in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Color.white.opacity(0.6), lineWidth: 1))
+        }.buttonStyle(FylioPressStyle(haptic: false))
+    }
+
+    private var continueButton: some View {
+        Button {
+            languageOverride = selected
+            dismiss()
+        } label: {
+            Text("Continuer  →").font(.system(size: 17, weight: .bold)).foregroundStyle(.white)
+                .frame(maxWidth: .infinity).padding(.vertical, 16)
+                .background(FylioTokens.sendGradient, in: Capsule())
+        }.padding(.horizontal, 20).buttonStyle(FylioPressStyle())
     }
 }
 
