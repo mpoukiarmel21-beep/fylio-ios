@@ -1,8 +1,6 @@
 import SwiftUI
 
-/// ACCUEIL FYLIO — reproduction fidèle de la maquette « 0-pages d'accueil » :
-/// header (avatar 90px + nom + "toujours connecté" + cloche/paramètres) →
-/// message d'accueil → MASCOTTE À DROITE, BOUTONS ENVOYER/RECEVOIR À GAUCHE.
+/// ACCUEIL — Rebuild : header propre, greeting lisible, 2 boutons pleine largeur verticaux (texte horizontal), mascotte retaillée en dessous, pas de chevauchement.
 struct HomeView: View {
     @EnvironmentObject var app: AppViewModel
     @State private var toast: String?
@@ -11,16 +9,17 @@ struct HomeView: View {
         ZStack {
             FylioBackground()
             ScrollView(showsIndicators: false) {
-                VStack(spacing: FylioTokens.spacingSection) {
+                VStack(spacing: 22) {
                     header
                     greeting
-                    actionZone          // ← mascotte à DROITE, boutons à GAUCHE
+                    mascotteRow
+                    actionButtons
                     devicesCard
                     historyCard
                 }
-            .padding(.horizontal, FylioTokens.screenMargin)
-                .padding(.top, 12)
-                .padding(.bottom, 40)
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+                .padding(.bottom, 36)
             }
         }
         .fylioToast($toast)
@@ -40,20 +39,20 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 8) {
                     Text(app.identity.displayName)
-                        .font(.system(size: 32, weight: .heavy))
-                        .foregroundStyle(FylioPalette.nightText)
+                        .font(.system(size: 28, weight: .heavy))
+                        .foregroundStyle(.white)
                         .lineLimit(1)
                     Button { app.route = .settings } label: {
                         Image(systemName: "pencil")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(FylioPalette.secondaryBlue)
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundStyle(.white.opacity(0.9))
                     }
                 }
                 HStack(spacing: 6) {
                     Circle().fill(FylioPalette.statusGreen).frame(width: 8, height: 8)
                     Text(String(localized: "home.alwaysConnected"))
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundStyle(FylioPalette.secondaryText)
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(.white.opacity(0.82))
                 }
             }
             Spacer(minLength: 12)
@@ -71,44 +70,42 @@ struct HomeView: View {
         }
     }
 
-    // MARK: Message d'accueil
+    // MARK: Message d'accueil — optimisé copywriting
 
     private var greeting: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 6) {
             Text(String(format: String(localized: "home.hello"), app.identity.displayName))
-                .font(.system(size: 44, weight: .heavy))
-                .foregroundStyle(FylioPalette.nightText)
+                .font(.system(size: 34, weight: .heavy))
+                .foregroundStyle(.white)
                 .lineLimit(2)
                 .minimumScaleFactor(0.7)
             Text(String(localized: "home.greeting"))
-                .font(.system(size: 24, weight: .medium))
-                .foregroundStyle(FylioPalette.secondaryText)
+                .font(.system(size: 16, weight: .medium))
+                .foregroundStyle(.white.opacity(0.88))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    // MARK: ★ ZONE D'ACTION — CORRECTION DE PLACEMENT ★
-    // Maquette : les BOUTONS Envoyer/Recevoir sont à GAUCHE, la MASCOTTE est
-    // à DROITE (elle regarde les boutons, chevauche légèrement leur bord droit).
+    // MARK: Mascotte retaillée (centrée, sous le greeting, ne chevauche plus les boutons)
 
-    private var actionZone: some View {
-        HStack(alignment: .bottom, spacing: 0) {
-            VStack(spacing: 16) {
-                FylioSendButton { app.route = .send }
-                FylioReceiveButton { app.route = .receive }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
+    private var mascotteRow: some View {
+        Button { app.playMascottGuide() } label: {
+            Image("mascotte_fylio")
+                .resizable().scaledToFit()
+                .frame(width: 132, height: 132)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .shadow(color: .black.opacity(0.14), radius: 10, y: 6)
+        }
+        .buttonStyle(FylioPressStyle())
+        .frame(maxWidth: .infinity)
+    }
 
-            Button {
-                app.playMascottGuide()
-            } label: {
-                Image("mascotte_fylio")
-                    .resizable().scaledToFit()
-                    .frame(width: 160, height: 188)
-                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-            }
-            .buttonStyle(FylioPressStyle())
-            .offset(x: -16, y: 8)
+    // MARK: Boutons Envoyer / Recevoir — pleine largeur, verticaux, texte HORIZONTAL (jamais vertical)
+
+    private var actionButtons: some View {
+        VStack(spacing: 14) {
+            FylioSendButton { app.route = .send }
+            FylioReceiveButton { app.route = .receive }
         }
     }
 

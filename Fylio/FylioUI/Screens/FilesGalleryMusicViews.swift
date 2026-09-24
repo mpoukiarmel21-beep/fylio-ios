@@ -14,7 +14,6 @@ struct FilesView: View {
         ZStack {
             FylioBackground()
             VStack(spacing: 0) {
-                header
                 categoryTabs
                 fileList
             }
@@ -39,16 +38,7 @@ struct FilesView: View {
         }
     }
 
-    private var header: some View {
-        HStack {
-            Image("files_character")
-                .resizable().scaledToFit().frame(height: 64)
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            Spacer()
-        }
-        .padding(.horizontal, FylioTokens.screenMargin)
-        .padding(.top, 10)
-    }
+    // Plus de header perso — sobre : titre natif + search seulement
 
     private var categoryTabs: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -86,7 +76,7 @@ struct FilesView: View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 10) {
                 if filteredFiles.isEmpty {
-                    FylioEmptyState(character: "files_character",
+                    FylioEmptyState(character: "empty_history",
                                     titleKey: "files.empty.title",
                                     subtitleKey: "files.empty.subtitle")
                 } else {

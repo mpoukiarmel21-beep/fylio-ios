@@ -65,10 +65,13 @@ struct SettingsView: View {
         section("settings.profile") {
             Button { app.renameDevice(appPeer) } label: {
                 row(HStack(spacing: 12) {
-                    FylioAvatarView(avatarID: app.identity.avatarID,
-                                    photoData: app.avatarPhotoData,
-                                    size: 44, showsOnlineDot: false)
-                    VStack(alignment: .leading) {
+                    // Avatar propre : initiales (pas de perso géant)
+                    ZStack {
+                        Circle().fill(FylioPalette.electricBlue)
+                        Text(String(app.identity.displayName.prefix(2)).uppercased())
+                            .font(.system(size: 16, weight: .heavy)).foregroundStyle(.white)
+                    }.frame(width: 44, height: 44)
+                    VStack(alignment: .leading, spacing: 2) {
                         Text(app.identity.displayName)
                             .font(.system(size: 17, weight: .bold))
                             .foregroundStyle(FylioPalette.nightText)
