@@ -68,8 +68,8 @@ struct LanguageOnboardingView: View {
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity).padding(.vertical, 14)
-            .background(selected == lang.code ? FylioTokens.sendGradient : AnyShapeStyle(.ultraThinMaterial),
-                        in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .background(selected == lang.code ? AnyShapeStyle(FylioTokens.sendGradient) : AnyShapeStyle(.ultraThinMaterial),
+                            in: RoundedRectangle(cornerRadius: 16, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Color.white.opacity(0.6), lineWidth: 1))
         }.buttonStyle(FylioPressStyle(haptic: false))
     }
