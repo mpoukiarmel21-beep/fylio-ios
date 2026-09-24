@@ -150,64 +150,6 @@ struct FilesView: View {
     }
 }
 
-// MARK: - GALERIE (doc 17) — onglet « Galerie »
-
-struct GalleryView: View {
-    @EnvironmentObject var app: AppViewModel
-
-    private var images: [FylioFileItem] {
-        app.allFileItems.filter { $0.contentType.contains("image") }
-    }
-
-    var body: some View {
-        ZStack {
-            FylioBackground()
-            VStack(spacing: 0) {
-                HStack {
-                    Image("gallery_character_left")
-                        .resizable().scaledToFit().frame(height: 60)
-                    Spacer()
-                    Image("gallery_character_right")
-                        .resizable().scaledToFit().frame(height: 60)
-                }
-                .padding(.horizontal, FylioTokens.screenMargin)
-                .padding(.top, 8)
-
-                if images.isEmpty {
-                    VStack {
-                        Spacer()
-                        FylioEmptyState(character: "empty_gallery",
-                                        titleKey: "gallery.empty.title",
-                                        subtitleKey: "gallery.empty.subtitle")
-                        Spacer()
-                    }
-                } else {
-                    ScrollView(showsIndicators: false) {
-                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 6),
-                                             GridItem(.flexible(), spacing: 6)], spacing: 6) {
-                            ForEach(images) { file in
-                                if let url = file.fileURL,
-                                   let data = try? Data(contentsOf: url),
-                                   let image = UIImage(data: data) {
-                                    Image(uiImage: image)
-                                        .resizable().scaledToFill()
-                                        .frame(height: 130)
-                                        .clipped()
-                                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                                        .onTapGesture { app.openFile(file) }
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 12)
-                    }
-                }
-            }
-        }
-        .navigationTitle(String(localized: "gallery.title"))
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
 // MARK: - MUSIQUE (Palier 2 — 3 sections DA bleu vitré, même maquette)
 
 struct MusicView: View {
