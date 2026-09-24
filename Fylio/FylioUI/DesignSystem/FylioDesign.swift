@@ -56,54 +56,46 @@ public enum FylioTokens {
     public static let cableButtonSize: CGFloat = 56
 }
 
-// MARK: - Fond bleu Fylio (bleu profond, logo centré en LaunchScreen via Info.plist)
+// MARK: - Fond app : blanc glacier (Pages.txt fidèle) — le bleu profond est UNIQUEMENT pour l'AppIcon/LaunchScreen
 
 public struct FylioBackground: View {
+    @Environment(\.colorScheme) private var scheme
     public init() {}
-
     public var body: some View {
-        // Bleu profond cohérent maquette + logo — lisible, pas pâle
-        LinearGradient(colors: [Color(hex: 0x0A3D8F), Color(hex: 0x155DFB), Color(hex: 0x0EA5E9)],
-                       startPoint: .topLeading, endPoint: .bottomTrailing)
-            .overlay(
-                // Voile radial clair au centre pour faire ressortir le contenu vitré
-                RadialGradient(colors: [Color.white.opacity(0.18), .clear],
-                               center: UnitPoint(x: 0.5, y: 0.35), startRadius: 10, endRadius: 520)
-            )
-            // Formes organiques très discrètes (pas de surcharge)
-            .overlay(
-                ZStack {
-                    Circle().fill(Color.white.opacity(0.07))
-                        .blur(radius: 50).frame(width: 360, height: 360)
-                        .offset(x: -130, y: 160)
-                    Circle().fill(Color.white.opacity(0.05))
-                        .blur(radius: 60).frame(width: 420, height: 420)
-                        .offset(x: 170, y: -140)
-                }
-            )
-            .ignoresSafeArea()
+        ZStack {
+            (scheme == .dark
+                ? LinearGradient(colors: [Color(hex: 0x061228), Color(hex: 0x0A1E40)], startPoint: .top, endPoint: .bottom)
+                : LinearGradient(colors: [FylioPalette.whiteIce, FylioPalette.paleBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
+            RadialGradient(colors: [Color.white.opacity(0.9), .clear], center: UnitPoint(x: 0.5, y: 0.30), startRadius: 0, endRadius: 500)
+            Circle().fill(FylioPalette.brightBlue.opacity(0.18)).blur(radius: 60).frame(width: 320, height: 320).offset(x: -140, y: 120)
+            Circle().fill(FylioPalette.secondaryBlue.opacity(0.12)).blur(radius: 80).frame(width: 380, height: 380).offset(x: 160, y: -180)
+            RoundedRectangle(cornerRadius: 90).fill(FylioPalette.lightBlue.opacity(0.10)).frame(width: 420, height: 160).rotationEffect(.degrees(-12)).offset(y: 420)
+        }.ignoresSafeArea()
     }
 }
 
-// MARK: - Carte splash (logo centré, pour Onboarding Language)
+// MARK: - Fond splash bleu profond (UNIQUEMENT pour LaunchScreen + FylioSplashView)
+
+public struct FylioSplashBackground: View {
+    public init() {}
+    public var body: some View {
+        LinearGradient(colors: [Color(hex: 0x0A3D8F), Color(hex: 0x155DFB), Color(hex: 0x0EA5E9)], startPoint: .topLeading, endPoint: .bottomTrailing)
+            .overlay(RadialGradient(colors: [Color.white.opacity(0.14), .clear], center: UnitPoint(x: 0.5, y: 0.35), startRadius: 10, endRadius: 520))
+            .ignoresSafeArea()
+    }
+}
 
 public struct FylioSplashView: View {
     public init() {}
     public var body: some View {
         ZStack {
-            FylioBackground()
+            FylioSplashBackground()
             VStack(spacing: 18) {
-                Image("logo_fylio")
-                    .resizable().scaledToFit()
-                    .frame(width: 180, height: 180)
+                Image("logo_fylio").resizable().scaledToFit().frame(width: 180, height: 180)
                     .clipShape(RoundedRectangle(cornerRadius: 36, style: .continuous))
                     .shadow(color: .black.opacity(0.18), radius: 20, y: 10)
-                Text("Fylio")
-                    .font(.system(size: 42, weight: .heavy, design: .rounded))
-                    .foregroundStyle(.white)
-                Text("Partage à la vitesse lumière")
-                    .font(.system(size: 15, weight: .medium))
-                    .foregroundStyle(.white.opacity(0.85))
+                Text("Fylio").font(.system(size: 42, weight: .heavy, design: .rounded)).foregroundStyle(.white)
+                Text("Partage à la vitesse lumière").font(.system(size: 15, weight: .medium)).foregroundStyle(.white.opacity(0.85))
             }
         }
     }

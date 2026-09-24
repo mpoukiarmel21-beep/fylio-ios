@@ -31,7 +31,9 @@ targets:
       properties:
         CFBundleDisplayName: Fylio
         UILaunchScreen:
-          UIImageName: logo_fylio
+          colorName: FylioLaunchBlue
+          imageName: logo_fylio
+          imageRespectsSafeAreaInsets: true
         NSLocalNetworkUsageDescription: Fylio has to join the local network to send and receive files.
         NSBonjourServices:
           - _fylio._tcp

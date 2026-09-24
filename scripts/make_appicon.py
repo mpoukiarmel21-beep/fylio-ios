@@ -18,12 +18,16 @@ SIZES = [
 def make_icon():
     OUT.mkdir(parents=True, exist_ok=True)
     logo = Image.open(LOGO).convert("RGBA")
-    # Fond : blanc bleuté de la DA (#EFF7FD) — jamais transparent (Apple le refuse)
+    # Fond bleu profond UNIQUEMENT pour l'icône/logo (app = blanc glacier, icône = bleu)
     for filename, size in SIZES:
-        canvas = Image.new("RGBA", (size, size), (239, 247, 253, 255))
-        icon = logo.resize((size, size), Image.LANCZOS)
-        canvas.alpha_composite(icon)
-        canvas.save(OUT / filename)
+        canvas = Image.new("RGBA", (size, size), (10, 61, 143, 255))  # #0A3D8F
+        # Logo centré à 68% de la taille (marges bleues)
+        pad = int(size * 0.16)
+        inner = size - pad * 2
+        icon = logo.resize((inner, inner), Image.LANCZOS)
+        canvas.alpha_composite(icon, dest=(pad, pad))
+        canvas = canvas.convert("RGB")  # pas de transparence (Apple refuse)
+        canvas.save(OUT / filename, "PNG")
     contents = {
         "images": [
             {"filename": "icon-40.png", "idiom": "iphone", "scale": "2x", "size": "20x20"},
